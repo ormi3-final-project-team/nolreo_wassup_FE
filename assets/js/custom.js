@@ -60,14 +60,14 @@ $(document).ready(function(){
         $( "#slider-range" ).slider({
             range: true,
             min: 0,
-            max: 12000,
-            values: [ 2677, 9241 ],
+            max: 5000000,
+            values: [ 0, 5000000 ],
             slide: function( event, ui ) {
-            $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            $( "#amount" ).val( "₩" + ui.values[ 0 ] + " - ₩" + ui.values[ 1 ] );
             }
         });
-        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-        " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+        $( "#amount" ).val( "₩" + $( "#slider-range" ).slider( "values", 0 ) +
+        " - ₩" + $( "#slider-range" ).slider( "values", 1 ) );
         
         
         // Quantity Buttons Shop
