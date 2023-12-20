@@ -194,7 +194,14 @@ $(document).ready(function(){
 
         });
         
-
+    // 8. datepick
+        $(document).ready(function() {
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0');
+            let yyyy = today.getFullYear();
+        
+            today = yyyy + '/' + mm + '/' + dd;
+            $('input[name="check_in"]').attr("placeholder", today);
+        });
 });	
-
-	

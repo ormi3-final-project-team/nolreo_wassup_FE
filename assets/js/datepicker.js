@@ -39,7 +39,7 @@ var DEFAULTS = {
   language: '',
 
   // The date string format
-  format: 'mm/dd/yyyy',
+  format: 'yyyy/mm/dd',
 
   // The initial date
   date: null,
@@ -59,25 +59,25 @@ var DEFAULTS = {
   weekStart: 0,
 
   // Show year before month on the datepicker header
-  yearFirst: false,
+  yearFirst: true,
 
   // A string suffix to the year number.
   yearSuffix: '',
 
   // Days' name of the week.
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  days: ['일', '월', '화', '수', '목', '금', '토'],
 
   // Shorter days' name
-  daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  daysShort: ['일', '월', '화', '수', '목', '금', '토'],
 
   // Shortest days' name
-  daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+  daysMin: ['일', '월', '화', '수', '목', '금', '토'],
 
   // Months' name
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 
   // Shorter months' name
-  monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  monthsShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 
   // A element tag for each item of years, months and days
   itemTag: 'li',
