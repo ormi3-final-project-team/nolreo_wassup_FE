@@ -32,7 +32,7 @@ const logout_navbar = `
 `
 
 const access_token = localStorage.getItem('access');
-const $navbar = document.querySelector('.navbar');
+const $navbar = document.querySelector('.custom-navbar');
 if (access_token) {
     $navbar.innerHTML += login_navbar;
 } else {
