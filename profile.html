@@ -137,30 +137,11 @@
 						<use xlink:href="#navbar-icon"></use>
 					</svg>
 				</button>
-				<div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar"
+				<div class="offcanvas offcanvas-end custom-navbar" tabindex="-1" id="bdNavbar"
 					aria-labelledby="bdNavbarOffcanvasLabel">
 					<div class="offcanvas-header px-4 pb-0">
 						<button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
 							aria-label="Close" data-bs-target="#bdNavbar"></button>
-					</div>
-					<div class="offcanvas-body text-hover light-border">
-						<ul id="navbar"
-							class="navbar-nav text-uppercase justify-content-lg-center justify-content-md-end align-items-center flex-grow-1 pe-3">
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase active" href="#">Login</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Signup</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Logout</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Profile</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Pick</a>
-							</li>
 					</div>
 				</div>
 			</div>
@@ -190,9 +171,9 @@
                         <div class="card-body" style="height: 300px;">
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                    class="rounded-circle" width="250">
+                                    class="rounded-circle profile-img" width="250" style="max-width: 100%;">
                                 <div class="mt-3">
-                                    <h4>John Doe</h4>
+                                    <h4 class="username">John Doe</h4>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +186,7 @@
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">NickName</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
+                                <div class="col-sm-9 text-secondary nickname">
                                     nickname
                                 </div>
                             </div>
@@ -214,7 +195,7 @@
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Email</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
+                                <div class="col-sm-9 text-secondary email">
                                     email@email.com
                                 </div>
                             </div>
@@ -224,7 +205,7 @@
                                     <h6 class="mb-0">reservation</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <a href="#">예약 목록 확인하기</a>
+                                    <a href="reservation-list.html">예약 목록 확인하기</a>
                                 </div>
                             </div>
                             <hr>
@@ -233,19 +214,17 @@
                                     <h6 class="mb-0">Like</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <a href="#">찜 목록 확인하기</a>
+                                    <a href="like-list.html">찜 목록 확인하기</a>
                                 </div>
                             </div>
                             <hr>
                             <div class="d-flex flex-row justify-content-end" style="padding-right: 30px;">
                                 <div class="d-flex justify-content-around">
                                     <div class="col-md-8">
-                                        <a class="btn btn-dark " target="__blank"
-                                            href="editprofile.html">회원정보 수정</a>
+                                        <a class="btn btn-dark " href="editprofile.html">회원정보 수정</a>
                                     </div>
                                     <div class="col-md-8">
-                                        <a class="btn btn-dark " target="__blank"
-                                            href="#">계정 탈퇴</a>
+                                        <a class="btn btn-dark secession-btn">계정 탈퇴</a>
                                     </div>
                                 </div>
                             </div>
@@ -386,6 +365,8 @@
     <script type="text/javascript" src="js/plugins.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script type="text/javascript" src="js/custom/common.js"></script>
+    <script type="text/javascript" src="js/custom/profile.js"></script>
 </body>
 
 </html>
