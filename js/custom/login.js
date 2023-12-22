@@ -17,6 +17,11 @@ $login_btn.addEventListener('click', (event) => {
     }).then((res) => {
         if (res.status === 200) {
             alert('로그인 성공!');
+            res.json().then((data) => {
+                localStorage.setItem('access', data['access']);
+                localStorage.setItem('refresh', data['refresh']);
+                localStorage.setItem('id', data['user_id']);
+            })
             window.location.href = 'index.html';
         } else {
             console.log(res.data['password'])
