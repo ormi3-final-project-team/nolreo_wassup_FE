@@ -1,4 +1,3 @@
-const user_id = localStorage.getItem('id');
 const secession_btn = document.querySelector('.secession-btn');
 
 fetch(url + 'account/' + user_id + '/', {

@@ -33,6 +33,7 @@ const url = 'http://127.0.0.1:8000/';
 const access_token = localStorage.getItem('access');
 const $navbar = document.querySelector('.custom-navbar');
 const $profile_btn = document.querySelector('#profile-btn');
+const user_id = localStorage.getItem('id');
 
 
 if (access_token) {
