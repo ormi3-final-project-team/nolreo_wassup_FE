@@ -34,13 +34,14 @@ const access_token = localStorage.getItem('access');
 const $navbar = document.querySelector('.custom-navbar');
 const $profile_btn = document.querySelector('#profile-btn');
 const user_id = localStorage.getItem('id');
-const $logout = document.querySelector('.logout');
 
 if (access_token) {
     $navbar.innerHTML += login_navbar;
 } else {
     $navbar.innerHTML += logout_navbar;
 }
+
+const $logout = document.querySelector('.logout');
 
 $logout.addEventListener('click', (event) => {
     event.preventDefault();
