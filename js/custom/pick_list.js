@@ -1,6 +1,7 @@
 const $lodging_pick_container = document.querySelector('.lodging-pick-container');
 const $rentalcar_pick_container = document.querySelector('.rentalcar-pick-container');
 const $bus_pick_container = document.querySelector('.bus-pick-container');
+const $train_pick_container = document.querySelector('.train-pick-container');
 
 fetch(url + 'pick/lodging/',{
     headers: {
@@ -31,8 +32,19 @@ fetch(url + 'pick/bus/',{
 }).then(res => res.json())
 .then(datas => {
     datas.forEach(data => {
-        console.log(data);
         createBusCard(data);
+    });
+});
+
+fetch(url + 'pick/train/',{
+    headers: {
+        'Authorization': `Bearer ${access_token}`
+    }
+}).then(res => res.json())
+.then(datas => {
+    datas.forEach(data => {
+        console.log('train_data', data);
+        createTrainCard(data);
     });
 });
 
@@ -192,7 +204,6 @@ function createBusCard(data){
         }
     }).then(res => res.json())
     .then(res => {
-        console.log(res);
         $bus_pick_container.innerHTML += `
         <div class="col-md-12 mt-4">
             <div class="d-flex d-row justify-content-between">
@@ -230,6 +241,73 @@ function createBusCard(data){
         const $bus_pick = document.querySelector(`.pick-${pick_id}`);
         $bus_pick.addEventListener('click', () => {
             fetch(url + 'pick/bus/' + pick_id + '/', {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json',
+                    'Authorization': `Bearer ${access_token}`,
+                }
+            }).then(res => {
+                if (res.status === 204) {
+                    alert('삭제되었습니다.');
+                    window.location.href = 'pick_list.html';
+                }else{
+                    console.log(res.json());
+                    alert('삭제에 실패했습니다.');
+                }
+            })
+        });
+    })
+}
+
+function createTrainCard(data){
+    const train_id = data['train'];
+    const pick_id = data['id'];
+
+    fetch(url + 'traffic/train/' + train_id + '/', {
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${access_token}`,
+        }
+    }).then(res => res.json())
+    .then(res => {
+        console.log(res);
+        $train_pick_container.innerHTML += `
+        <div class="col-md-12 mt-4">
+            <div class="d-flex d-row justify-content-between">
+                <div class="col-md-5">
+                    <div class="swiper-slide">
+                        <img src="images/train.jpg" alt="image" class="thumb-image img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h3 class="fw-bold">버스</h3>
+                        <div>
+                            <a class="pick-${pick_id}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <p>출발 일시 : ${res['depart_time'].replace('T', ' ')}</p>
+                    <p>도착 일시 : ${res['arrival_time'].replace('T', ' ')}</p>
+                    <p>출발지 : ${res['depart_point']}</p>
+                    <p>도착지 : ${res['dest_point']}</p>
+                    <p style="color: red;">잔여 좌석 : ${res['rest_seat']}</p>
+                    <div class="d-flex flex-row justify-content-between">
+                        <p class="d-flex fw-bold fs-2">${res['price']}원</p>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit"><a href="#">예약 하러가기</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        `
+
+        const $train_pick = document.querySelector(`.pick-${pick_id}`);
+        $train_pick.addEventListener('click', () => {
+            fetch(url + 'pick/train/' + pick_id + '/', {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json',
