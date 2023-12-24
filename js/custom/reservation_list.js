@@ -1,6 +1,7 @@
 const $lodging_reservation_container = document.querySelector('.lodging-reservation-container');
 const $rentalcar_reservation_container = document.querySelector('.rentalcar-reservation-container');
 const $bus_reservation_container = document.querySelector('.bus-reservation-container');
+const $train_reservation_container = document.querySelector('.train-reservation-container');
 
 fetch(url + 'reservation/lodging/', {
     headers: {
@@ -32,6 +33,18 @@ fetch(url + 'reservation/bus/', {
 .then((datas) => {
     datas.forEach(data => {
         createBusCard(data);
+    });
+})
+
+fetch(url + 'reservation/train/', {
+    headers: {
+        'Authorization': `Bearer ${access_token}`,
+    },
+}).then((response) => response.json())
+.then((datas) => {
+    datas.forEach(data => {
+        console.log(data);
+        createTrainCard(data);
     });
 })
 
@@ -136,6 +149,41 @@ function createBusCard(data){
                     <p>도착지 : ${bus_data['dest_point']}</p>
                     <div class="d-flex flex-row justify-content-between">
                         <p class="d-flex fw-bold fs-2">${bus_data['price']}원</p>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">예약취소</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        `
+    })
+}
+
+function createTrainCard(data){
+    const train_id = data['train'];
+    fetch(url + 'traffic/train/' + train_id + '/', {
+        headers: {
+            'Authorization': `Bearer ${access_token}`,
+        },
+    }).then((response) => response.json())
+    .then((train_data) => {
+        console.log(train_data);
+        $train_reservation_container.innerHTML += `
+        <div class="col-md-12 mt-4">
+            <div class="d-flex d-row justify-content-between">
+                <div class="col-md-5">
+                    <div class="swiper-slide">
+                        <img src="images/train.jpg" alt="image" class="thumb-image img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="fw-bold">기차</h3>
+                    <p>출발 일시 : ${train_data['depart_time'].replace('T', ' ')}</p>
+                    <p>도착 일시 : ${train_data['arrival_time'].replace('T', ' ')}</p>
+                    <p>출발지 : ${train_data['depart_point']}</p>
+                    <p>도착지 : ${train_data['dest_point']}</p>
+                    <div class="d-flex flex-row justify-content-between">
+                        <p class="d-flex fw-bold fs-2">${train_data['price']}원</p>
                         <button class="btn btn-primary btn-lg btn-block" type="submit">예약취소</button>
                     </div>
                 </div>
