@@ -1,5 +1,6 @@
 const $lodging_reservation_container = document.querySelector('.lodging-reservation-container');
 const $rentalcar_reservation_container = document.querySelector('.rentalcar-reservation-container');
+const $bus_reservation_container = document.querySelector('.bus-reservation-container');
 
 fetch(url + 'reservation/lodging/', {
     headers: {
@@ -19,8 +20,18 @@ fetch(url + 'reservation/rental_car/', {
 }).then((response) => response.json())
 .then((datas) => {
     datas.forEach(data => {
-        console.log(data);
         createRentalcarCard(data);
+    });
+})
+
+fetch(url + 'reservation/bus/', {
+    headers: {
+        'Authorization': `Bearer ${access_token}`,
+    },
+}).then((response) => response.json())
+.then((datas) => {
+    datas.forEach(data => {
+        createBusCard(data);
     });
 })
 
@@ -57,7 +68,7 @@ function createLodgingCard(data) {
                         <p>기준 ${room_data['capacity'] - 1}인/ 최대 ${room_data['capacity']}인</p>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
-                        <p class="d-flex fw-bold fs-3">300,000원</p>
+                        <p class="d-flex fw-bold fs-3">${room_data['price']}원</p>
                         <button class="btn btn-primary btn-lg btn-block" type="submit">예약변경</button>
                     </div>
                 </div>
@@ -76,7 +87,6 @@ function createRentalcarCard(data){
         },
     }).then((response) => response.json())
     .then((car_data) => {
-        console.log(car_data);
         $rentalcar_reservation_container.innerHTML += `
         <div class="col-md-12">
             <div class="d-flex d-row justify-content-between mt-5">
@@ -93,6 +103,40 @@ function createRentalcarCard(data){
                     <div class="d-flex flex-row justify-content-between">
                         <p class="d-flex fw-bold fs-3">${car_data['price']}원</p>
                         <button class="btn btn-primary btn-lg btn-block" type="submit">예약변경</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        `
+    })
+}
+
+function createBusCard(data){
+    const bus_id = data['bus'];
+    fetch(url + 'traffic/bus/' + bus_id + '/', {
+        headers: {
+            'Authorization': `Bearer ${access_token}`,
+        },
+    }).then((response) => response.json())
+    .then((bus_data) => {
+        $bus_reservation_container.innerHTML += `
+        <div class="col-md-12 mt-4">
+            <div class="d-flex d-row justify-content-between">
+                <div class="col-md-5">
+                    <div class="swiper-slide">
+                        <img src="images/bus1.jpg" alt="image" class="thumb-image img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="fw-bold">버스</h3>
+                    <p>출발 일시 : ${bus_data['depart_time'].replace('T', ' ')}</p>
+                    <p>도착 일시 : ${bus_data['arrival_time'].replace('T', ' ')}</p>
+                    <p>출발지 : ${bus_data['depart_point']}</p>
+                    <p>도착지 : ${bus_data['dest_point']}</p>
+                    <div class="d-flex flex-row justify-content-between">
+                        <p class="d-flex fw-bold fs-2">${bus_data['price']}원</p>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">예약취소</button>
                     </div>
                 </div>
             </div>
