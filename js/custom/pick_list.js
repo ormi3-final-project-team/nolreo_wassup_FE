@@ -90,7 +90,7 @@ function createLodgingCard(data){
                         &nbsp;                                      
                         <p>(${res['review_cnt']})</p>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row justify-content-end">
                         <button class="btn btn-primary btn-lg btn-block" type="submit"><a href="#">예약 하러가기</a></button>
                     </div>
                 </div>

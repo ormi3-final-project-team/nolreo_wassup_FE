@@ -43,7 +43,6 @@ fetch(url + 'reservation/train/', {
 }).then((response) => response.json())
 .then((datas) => {
     datas.forEach(data => {
-        console.log(data);
         createTrainCard(data);
     });
 })
@@ -167,7 +166,6 @@ function createTrainCard(data){
         },
     }).then((response) => response.json())
     .then((train_data) => {
-        console.log(train_data);
         $train_reservation_container.innerHTML += `
         <div class="col-md-12 mt-4">
             <div class="d-flex d-row justify-content-between">
