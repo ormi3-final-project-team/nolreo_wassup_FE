@@ -1,5 +1,3 @@
-
-
 const login_navbar = `
 <div class="offcanvas-body text-hover light-border">
     <ul id="navbar"
@@ -11,7 +9,7 @@ const login_navbar = `
             <a class="nav-link light text-uppercase profile_btn" href="profile.html">Profile</a>
         </li>
         <li class="nav-item pe-4">
-            <a class="nav-link light text-uppercase" href="like_list.html">Pick</a>
+            <a class="nav-link light text-uppercase" href="pick_list.html">Pick</a>
         </li>
     </ul>
 </div>
@@ -31,13 +29,12 @@ const logout_navbar = `
 </div>
 `
 
-
 const url = 'http://127.0.0.1:8000/';
 const access_token = localStorage.getItem('access');
 const $navbar = document.querySelector('.custom-navbar');
 const $profile_btn = document.querySelector('#profile-btn');
 const user_id = localStorage.getItem('id');
-
+const $logout = document.querySelector('.logout');
 
 if (access_token) {
     $navbar.innerHTML += login_navbar;
@@ -45,9 +42,7 @@ if (access_token) {
     $navbar.innerHTML += logout_navbar;
 }
 
-const logout = document.querySelector('.logout');
-
-logout.addEventListener('click', (event) => {
+$logout.addEventListener('click', (event) => {
     event.preventDefault();
 
     localStorage.clear('access');
