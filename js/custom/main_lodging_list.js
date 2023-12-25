@@ -26,18 +26,18 @@ function createCard(pick_list){
         console.log(res);
         res.forEach(element => {
             console.log(element);
-            const $lodging_id = element['id'];
+            // const $lodging_id = element['id'];
             const $product_items = document.querySelector('.product_items');
             const $product_image = element['lodging_image'];
-            document.querySelector('.profile-img').src = res['image'];
-            console.log($product_image);
+            
+            console.log($product_image.image);
             card_html = ''
             card_html += `
             <div class="col-md-4 mb-5 product-item">
                 <div class="product-card position-relative overflow-hidden">
                     <div class="image-holder lodging_image">
-                        <a href="room-details.html"> <img src="${element['image']}" alt="image"
-                                class="img-fluid overflow-hidden"> </a>
+                        <a href="room-details.html"> <img src="${url+$product_image.image}" alt="image"
+                                class="img-fluid overflow-hidden lodging_images"> </a>
                     </div>
                     <div class="product-detail">
                         <div class="lodging_id" value="${element['id']}" hidden></div>
@@ -48,6 +48,7 @@ function createCard(pick_list){
                             </h3>
                             <div class="like_svg">
             `
+            
             if (pick_list.includes(element['id'])){
                 card_html += `
                                 <a class="btn pick-btn-${element['id']}"><i class="fa-solid fa-heart fs-2"></i></a>
@@ -66,12 +67,12 @@ function createCard(pick_list){
                                 <tbody>
                                     <tr>
                                         <td class="pe-2"><strong>가격:</strong></td>
-                                        <td class="price"><strong>500,000₩</strong> /1박</td>
+                                        <td class="price"><strong>${element['price']}</strong> /1박</td>
                                     </tr>
                                     <tr>
                                         <td class="pe-2"><i class="fa-solid fa-star"
                                                 style="color: #eef202;"></i>별점</td>
-                                        <td>(1111)</td>
+                                        <td>(${element['star_avg']})</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -81,6 +82,7 @@ function createCard(pick_list){
                 </div>
             </div>
             `
+            
             $product_items.insertAdjacentHTML('beforeend', card_html);
             
             if (pick_list.includes(element['id'])){
