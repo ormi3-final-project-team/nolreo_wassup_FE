@@ -21,3 +21,4 @@ jobs:
             set -e
             cd /home/ubuntu/nolreo_wassup/nolreo_wassup_FE
             git pull origin deploy
+            sudo systemctl restart nginx
