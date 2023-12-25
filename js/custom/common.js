@@ -1,5 +1,3 @@
-
-
 const login_navbar = `
 <div class="offcanvas-body text-hover light-border">
     <ul id="navbar"
@@ -45,6 +43,7 @@ if (access_token) {
     $navbar.innerHTML += logout_navbar;
 }
 
+// 로그아웃 기능
 const logout = document.querySelector('.logout');
 
 logout.addEventListener('click', (event) => {
