@@ -19,16 +19,18 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Old+Standard+TT:wght@400;700&display=swap"
         rel="stylesheet">
+
     <script src="js/modernizr.js"></script>
 </head>
 
 <body>
-
+    <!-- svg -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
             <path fill="currentColor"
@@ -123,72 +125,83 @@
         </symbol>
     </svg>
 
-	<header id="header" class="site-header header-scrolled position-absolute text-black bg-light">
-		<nav id="header-nav" class="navbar fixed-top navbar-expand-lg px-3 py-3">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html">
-					<p style="color: white; margin-top: 10px;">놀러Wassup</p>
-					<!-- <img src="images/main-logo.png" class="logo"> -->
-				</a>
-				<button class="navbar-toggler d-flex d-lg-none order-3 p-2 shadow-none" type="button"
-					data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<svg class="navbar-icon">
-						<use xlink:href="#navbar-icon"></use>
-					</svg>
-				</button>
-				<div class="offcanvas offcanvas-end custom-navbar" tabindex="-1" id="bdNavbar"
-					aria-labelledby="bdNavbarOffcanvasLabel">
-					<div class="offcanvas-header px-4 pb-0">
-						<button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
-							aria-label="Close" data-bs-target="#bdNavbar"></button>
-					</div>
-				</div>
-			</div>
-		</nav>
-	</header>
+    <header id="header" class="site-header header-scrolled position-absolute text-black bg-light">
+        <nav id="header-nav" class="navbar fixed-top navbar-expand-lg px-3 py-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/main-logo.png" class="logo">
+                </a>
+                <button class="navbar-toggler d-flex d-lg-none order-3 p-2 shadow-none" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <svg class="navbar-icon">
+                        <use xlink:href="#navbar-icon"></use>
+                    </svg>
+                </button>
+                <div class="offcanvas offcanvas-end custom-navbar" tabindex="-1" id="bdNavbar"
+                    aria-labelledby="bdNavbarOffcanvasLabel">
+                    <div class="offcanvas-header px-4 pb-0">
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                            aria-label="Close" data-bs-target="#bdNavbar"></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <section id="intro">
         <div class="image-holder position-relative">
             <img src="images/banner-item2.jpg" alt="banner" class="img-fluid">
         </div>
-        <div class="container">
-            <div class="sub-banner-content position-absolute">
-                <div id="about" class="container py-5 ">
-                    <h1 class="banner-title light display-1 text-capitalize">Login</h1>
-                    <span class="item text-white"><a href="#" class="text-white">Account</a></span> &nbsp; <span
-                        class="text-white">/</span> &nbsp; <span class="item text-white">Login</span>
-                </div>
-            </div>
-        </div>
     </section>
 
     <div class="post-wrap my-5">
         <div class="container">
+
             <div class="row mt-4 g-md-5">
-                <aside class="col-md-12 d-flex justify-content-center">
-                    <form id="form" class="form-group flex-wrap bg-light p-4 border rounded-3">
-                        <h4 class="mb-3 d-flex justify-content-center">숙박 예약은 놀러 Wassup!</h4>
-                        <p class="mb-3 d-flex justify-content-center">회원가입을 하시면 더 많은 혜택을 받으실 수 있습니다.&nbsp<a class="text-primary" href="signup.html">회원가입하러가기</a></p>
-                            
-                        <div class="col-lg-12 my-4">
-                            <label for="InputEmail" class="form-label text-black">Email</label>
-                            <input type="email" name="quantity" class="form-control ps-3 email" placeholder="you@example.com">
-                        </div>
-                        <div class="col-lg-12 my-4">
-                            <label for="Inputpassword1" class="form-label text-black">Password1</label>
-                            <input type="password" name="quantity" class="form-control ps-3 password" placeholder="password">
-                        </div>
-                        <div class="d-grid mb-3">
-                            <button class="btn btn-primary btn-lg btn-pill btn-dark fs-4 login-btn">로그인</button>
-                        </div>
-                    </form>
-                </aside>
+                <main class="post-grid col-md-9">
+                    <div class="row">
+                        <article class="property">
+
+                            <div class="post-content py-5">
+                                <div class="lodging-reservation-container">
+                                    <h3 class="mt-5">숙소 예약 목록</h3>
+                                    <hr>
+                                </div>
+
+                                <div class="rentalcar-reservation-container">
+                                    <h3 class="mt-5">렌트 예약 목록</h3>
+                                    <hr>
+                                </div>
+
+                                <div class="bus-reservation-container">
+                                    <h3 class="mt-5">버스 예약 목록</h3>
+                                    <hr>
+                                </div>
+
+                                <div class="train-reservation-container">
+                                    <h3 class="mt-5">기차 예약 목록</h3>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="details">
+                                <h3 class=" fs-2 mb-4 fw-bold">취소 안내</h3>
+                                <hr>
+                                    <p> 취소 및 환불이 불가한 숙소 상품을 예약한 경우도 예약 완료 후 일정 시간 이내에 무료로 취소할 수 있습니다.
+                                        '취소불가'로 표기되더라도 객실별 기본 정보의 취소규정이 '취소가능'으로 제공되는 경우 고객센터를 통해 취소 가능합니다.
+                                    </p>
+                                </div>
+                                <hr>
+                            </div>
+                        </article>
+                    </div>
+                </main>
             </div>
         </div>
     </div>
 
     <footer id="footer" class="overflow-hidden padding-large pb-0 bg-gray-100 footer">
+
     </footer>
 
     <script src="js/jquery-1.11.0.min.js"></script>
@@ -199,8 +212,27 @@
     <script type="text/javascript" src="js/plugins.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script>
+        $(document).ready(function($) {
+            $(".scroll_move").click(function(event){
+                console.log(".scroll_move");         
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+            });
+            
+        });
+    </script>
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+    <script charset="UTF-8">
+        new daum.roughmap.Lander({
+            "timestamp" : "1703125328387",
+            "key" : "2haer",
+            "mapWidth" : "480",
+            "mapHeight" : "240"
+        }).render();
+    </script>
     <script type="text/javascript" src="js/custom/common.js"></script>
-    <script type="text/javascript" src="js/custom/login.js"></script>
+    <script type="text/javascript" src="js/custom/reservation_list.js"></script>
 </body>
 
 </html>
