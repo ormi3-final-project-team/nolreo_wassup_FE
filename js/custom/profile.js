@@ -10,7 +10,7 @@ fetch(url + 'account/' + user_id + '/', {
     if (res['image'] != null) {
         document.querySelector('.profile-img').src = res['image'];
     }
-    document.querySelector('.username').innerHTML = res['username'];
+    document.querySelector('.username').textContent = res['username'];
     document.querySelector('.nickname').textContent = res['nickname'];
     document.querySelector('.email').textContent = res['email'];
 });
