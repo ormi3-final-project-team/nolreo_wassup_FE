@@ -139,30 +139,11 @@
 						<use xlink:href="#navbar-icon"></use>
 					</svg>
 				</button>
-				<div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar"
+				<div class="offcanvas offcanvas-end custom-navbar" tabindex="-1" id="bdNavbar"
 					aria-labelledby="bdNavbarOffcanvasLabel">
 					<div class="offcanvas-header px-4 pb-0">
 						<button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
 							aria-label="Close" data-bs-target="#bdNavbar"></button>
-					</div>
-					<div class="offcanvas-body text-hover light-border">
-						<ul id="navbar"
-							class="navbar-nav text-uppercase justify-content-lg-center justify-content-md-end align-items-center flex-grow-1 pe-3">
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase active" href="#">Login</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Signup</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Logout</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Profile</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Pick</a>
-							</li>
 					</div>
 				</div>
 			</div>
@@ -425,12 +406,26 @@
                                             <form method="post" class="form-group padding-small">
                                                 <div class="row">
                                                     <div class="col-lg-12 mb-3">
-                                                        <textarea class="form-control ps-3 pt-3" id="comment" name="comment"
+                                                        <textarea class="form-control ps-3 pt-3 review_content" id="comment" name="comment"
                                                             placeholder="리뷰 내용을 입력하세요"></textarea>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="rating_box d-flex justify-content-end p-3">
+                                                            <label class="me-3" for="">평점</label>
+                                                            <input type="radio" name="rating" value="5" id="5"><label class="me-3"
+                                                                for="5">⭐⭐⭐⭐⭐</label>
+                                                            <input type="radio" name="rating" value="4" id="4"><label class="me-3"
+                                                                for="4">⭐⭐⭐⭐</label>
+                                                            <input type="radio" name="rating" value="3" id="3"><label class="me-3"
+                                                                for="3">⭐⭐⭐</label>
+                                                            <input type="radio" name="rating" value="2" id="2"><label class="me-3"
+                                                                for="2">⭐⭐</label>
+                                                            <input type="radio" name="rating" value="1" id="1"><label
+                                                                for="1">⭐</label>
                                                     </div>
                                                     <div class="col-lg-12 mt-3">
                                                         <button
-                                                            class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6 w-100"
+                                                            class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6 w-100 review_btn"
                                                             type="submit">리뷰 작성</button>
                                                     </div>
                                                 </div>
@@ -510,31 +505,35 @@
                         <div class="col-lg-12 my-4">
                             <label for="checkin" class="form-label text-black">Check-In</label>
                             <div class="input-group date" id="datepicker">
-                                <input type="date" id="start" name="appointment" min="2023-01-01" max="2023-12-31"
-                                    class="form-control ps-3 me-3">
+                                <input type="date" id="start_at" name="appointment" min="2023-12-21" max="2024-12-31"
+                                    class="form-control ps-3 me-3 start_at">
                             </div>
                         </div>
                         <div class="col-lg-12 my-4">
                             <label for="checkout" class="form-label text-black">Check-Out</label>
                             <div class="input-group date" id="datepicker">
-                                <input type="date" id="start" name="appointment" min="2023-01-01" max="2023-12-31"
-                                    class="form-control ps-3 me-3">
+                                <input type="date" id="end_at" name="appointment" min="2023-12-21" max="2024-12-31"
+                                    class="form-control ps-3 me-3 end_at">
                             </div>
                         </div>
                         <div class="col-lg-12 my-4">
                             <label for="rooms" class="form-label text-black">Room Type</label>
-                            <input type="number" value="1" name="quantity" class="form-control ps-3">
+                            <select class="room-select form-control ps-3" name="room-type" id="room-type">
+                                <option value="1">Suite</option>
+                                <option value="2">Deluxe</option>
+                                <option value="3">Premier King</option>
+                            </select>
                         </div>
                         <div class="col-lg-12 my-4">
                             <label for="adults" class="form-label text-black">Adult</label>
-                            <input type="number" value="1" name="quantity" class="form-control ps-3">
+                            <input type="number" value="1" name="quantity" class="form-control ps-3 adults">
                         </div>
                         <div class="col-lg-12 my-4">
                             <label for="Childrens" class="form-label text-black">Children</label>
-                            <input type="number" value="0" name="quantity" class="form-control ps-3">
+                            <input type="number" value="0" name="quantity" class="form-control ps-3 childrens">
                         </div>
                         <div class="d-grid mb-3">
-                            <button class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6"> 예약 </button>
+                            <button class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6 lodging-details-reservation-btn"> 예약 </button>
                         </div>
                     </form>
 
@@ -693,6 +692,9 @@
             "mapHeight" : "240"
         }).render();
     </script>
+    <script type="text/javascript" src="js/custom/lodging_details.js"></script>
+    <script type="text/javascript" src="js/custom/lodging_details_review.js"></script>
+    <script type="text/javascript" src="js/custom/common.js"></script>
 </body>
 
 </html>
