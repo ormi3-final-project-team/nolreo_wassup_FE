@@ -52,7 +52,6 @@ if (access_token) {
     $navbar.innerHTML += logout_navbar;
 }
 
-
 $footer.innerHTML += `
 <div class="container">
     <div class="row d-flex flex-wrap justify-content-between">
