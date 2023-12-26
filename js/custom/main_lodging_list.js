@@ -1,5 +1,5 @@
 const accessToken = localStorage.getItem('access');
-
+const $hotel_search_btn = document.querySelector('.hotel_search_btn');
 
 if (accessToken === null) {
     createCard([]);
@@ -11,25 +11,30 @@ else{
         },
     }).then(res => {
         res.json().then(res => {
-            console.log(res); 
-            createCard(res['lodging_pick']);
+            $hotel_search_btn.addEventListener('click', (event) => {
+                event.preventDefault();
+                createCard(res['lodging_pick']);
+            })
+            createCard(res['lodging_pick']); 
         })
     })
 }
 
-
 function createCard(pick_list){
-    fetch(url + 'lodging/', {
+    const $hotel_checkin_date = document.querySelector('.hotel_checkin_date').value;
+    const $hotel_checkout_date = document.querySelector('.hotel_checkout_date').value;
+    fetch(url + `lodging/?start_at=${$hotel_checkin_date}&end_at=${$hotel_checkout_date}`, {
         headers: {
             'Content-Type': 'application/multipart',
         }
     }).then(res => res.json())
     .then(res => {
         console.log(res);
+        const $product_items = document.querySelector('.product_items');
+        $product_items.innerHTML = '';
         res.forEach(element => {
             console.log(element);
             const $lodging_id = element['id'];
-            const $product_items = document.querySelector('.product_items');
             const $product_image = element['lodging_image'];
             
             console.log($product_image.image);
@@ -130,7 +135,7 @@ function createCard(pick_list){
                 pick_list.push(element['id']);
             }
         });
-    })
-}
+    });
+};
 
 
