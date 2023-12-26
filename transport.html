@@ -184,14 +184,14 @@
 									<label for="exampleInputEmail1" class="form-label text-black">체크 인</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+											max="2024-12-31" class="form-control ps-3 me-3">
 									</div>
 								</div>
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">체크 아웃</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+											max="2024-12-31" class="form-control ps-3 me-3">
 									</div>
 								</div>
 							</div>
@@ -218,33 +218,39 @@
 									<label for="exampleInputEmail1" class="form-label text-black">출발 날짜</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+											max="2024-12-31" class="form-control ps-3 me-3 transport_checkin_date">
 									</div>
 								</div>
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">도착 날짜</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+											max="2024-12-31" class="form-control ps-3 me-3 transport_checkout_date">
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-3 my-4">
 									<label for="departure" class="form-label text-black">출발지</label>
-									<select id="departure" name="departure" class="form-control ps-4 input-width">
+									<select id="departure" name="departure" class="form-control ps-4 input-width transport_depart">
 										<option value="" selected disabled>선택해주세요</option>
-										<option value="seoul">서울</option>
-										<option value="busan">부산</option>
+										<option value='서울'>서울</option>
+										<option value="울산">울산</option>
+										<option value="전주">전주</option>
+										<option value="부산">부산</option>
+										<option value="start_test">start_test</option>
 										<!-- 기타 지역 -->
 									</select>
 								</div>
 								<div class="col-lg-3 my-4">
 									<label for="destination" class="form-label text-black">목적지</label>
-									<select id="destination" name="destination" class="form-control ps-4 input-width">
+									<select id="destination" name="destination" class="form-control ps-4 input-width transport_dest">
 										<option value="">선택해주세요</option>
-										<option value="seoul">서울</option>
-										<option value="busan">부산</option>
+										<option value='서울'>서울</option>
+										<option value='울산'>울산</option>
+										<option value="전주">전주</option>
+										<option value="부산">부산</option>
+										<option value="end_test">end_test</option>
 										<!-- 기타 지역 -->
 									</select>
 								</div>
@@ -258,7 +264,7 @@
 								</div>
 							</div>
 							<div class="d-grid mb-3">
-								<button class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6">검색</button>
+								<button class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6 transport_search_btn">검색</button>
 							</div>
 						</form>
 					</div>
@@ -268,15 +274,15 @@
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">대여 날짜</label>
 									<div class="input-group date" id="datepicker">
-										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+										<input type="datetime-local" id="start" name="appointment" min="2023-01-01T00:00"
+											max="2024-12-31T00:00" class="form-control ps-3 me-3">
 									</div>
 								</div>
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">반납 날짜</label>
 									<div class="input-group date" id="datepicker">
-										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+										<input type="datetime-local" id="start" name="appointment" min="2023-01-01"
+											max="2024-12-31" class="form-control ps-3 me-3">
 									</div>
 								</div>
 							</div>
