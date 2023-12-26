@@ -1,4 +1,6 @@
 const accessToken = localStorage.getItem('access');
+const $hotel_search_btn = document.querySelector('.hotel_search_btn');
+const $hotel_btn = document.querySelector('.hotel_btn');
 
 
 if (accessToken === null) {
@@ -12,14 +14,13 @@ else{
     }).then(res => {
         res.json().then(res => {
             console.log(res); 
-            createCard(res['lodging_pick']);
+            createCard(res['rental_car_pick']);
         })
     })
 }
 
-
 function createCard(pick_list){
-    fetch(url + 'lodging/', {
+    fetch(url + 'traffic/rentalcar/', {
         headers: {
             'Content-Type': 'application/multipart',
         }
@@ -28,9 +29,9 @@ function createCard(pick_list){
         console.log(res);
         res.forEach(element => {
             console.log(element);
-            const $lodging_id = element['id'];
+            const $rentalcar_id = element['id'];
             const $product_items = document.querySelector('.product_items');
-            const $product_image = element['lodging_image'];
+            const $product_image = element['car_image'];
             
             console.log($product_image.image);
             card_html = ''
@@ -42,11 +43,11 @@ function createCard(pick_list){
                                 class="img-fluid overflow-hidden lodging_images"> </a>
                     </div>
                     <div class="product-detail">
-                        <div class="lodging_id" value="${element['id']}" hidden></div>
+                        <div class="rentalcar_id" value="${element['id']}" hidden></div>
 
                         <div class="d-flex flex-row justify-content-between mt-3 mb-3">
                             <h3 class="mt-3">
-                                <a class="hotel_name" href="#">${element['name']}</a>
+                                <a class="hotel_name" href="#">${element['model']}</a>
                             </h3>
                             <div class="like_svg">
             `
@@ -69,7 +70,7 @@ function createCard(pick_list){
                                 <tbody>
                                     <tr>
                                         <td class="pe-2"><strong>가격:</strong></td>
-                                        <td class="price"><strong>${element['price']}</strong> /1박</td>
+                                        <td class="price"><strong>${element['price']}</strong> / 24시간</td>
                                     </tr>
                                     <tr>
                                         <td class="pe-2"><i class="fa-solid fa-star"
@@ -91,7 +92,7 @@ function createCard(pick_list){
                 const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
                 $pick_btn.addEventListener('click', (event) => {
                     console.log($pick_btn);
-                    fetch(url + `pick/lodging/${$lodging_id}/`, {
+                    fetch(url + `pick/reltal_car/${$rentalcar_id}/`, {
                         method: 'DELETE',   
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
@@ -107,16 +108,16 @@ function createCard(pick_list){
             }else{
                 const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
                 $pick_btn.addEventListener('click', (event) => {
-                    fetch(url + 'pick/lodging/', {
+                    fetch(url + 'pick/rental_car/', {
                         method: 'POST',
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            pick_type : 'LG',
+                            pick_type : 'RC',
                             user : user_id,
-                            lodging : $lodging_id,
+                            rental_car : $rentalcar_id,
                         }),
                     }).then((res) => {
                         if (res.status === 201) {
