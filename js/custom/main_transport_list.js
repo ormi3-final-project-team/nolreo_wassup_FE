@@ -39,7 +39,7 @@ function createCard(pick_list){
     .then(res => {
         const $product_items = document.querySelector('.product_items');
         res.forEach(element => {
-            const $train_id = element['id'];
+            const $bus_id = element['id'];
             $depart_time = element['depart_time']
             $depart_time = $depart_time.split('T')
             $depart_time = $depart_time[0] + ' ' + $depart_time[1].split('.')[0]
@@ -82,7 +82,7 @@ function createCard(pick_list){
                                 <tbody>
                                     <tr>
                                         <td class="pe-2"><strong>가격:</strong></td>
-                                        <td class="price"><strong>${element['price']}</strong></td>
+                                        <td class="price"><strong>${element['price_form']}</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -98,7 +98,7 @@ function createCard(pick_list){
             if (pick_list.includes(element['id'])){
                 const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
                 $pick_btn.addEventListener('click', (event) => {
-                    fetch(url + `pick/train/${$train_id}/`, {
+                    fetch(url + `pick/bus/${$bus_id}/`, {
                         method: 'DELETE',   
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
@@ -113,14 +113,14 @@ function createCard(pick_list){
             }else{ 
                 const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
                 $pick_btn.addEventListener('click', (event) => {
-                    fetch(url + 'pick/train/', {
+                    fetch(url + 'pick/bus/', {
                         method: 'POST',
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            pick_type : 'TR',
+                            pick_type : 'BU',
                             user : user_id,
                             bus : $bus_id,
                         }),
@@ -199,7 +199,7 @@ function createCard2(pick_list){
                                 <tbody>
                                     <tr>
                                         <td class="pe-2"><strong>가격:</strong></td>
-                                        <td class="price"><strong>${element['price']}</strong></td>
+                                        <td class="price"><strong>${element['price_form']}</strong></td>
                                     </tr>
                                 </tbody>
                             </table>

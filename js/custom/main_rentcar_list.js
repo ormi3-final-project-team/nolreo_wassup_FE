@@ -1,7 +1,5 @@
 const accessToken = localStorage.getItem('access');
-const $hotel_search_btn = document.querySelector('.hotel_search_btn');
-const $hotel_btn = document.querySelector('.hotel_btn');
-
+const $rentcar_search_btn = document.querySelector('.rentcar_search_btn');
 
 if (accessToken === null) {
     createCard([]);
@@ -13,27 +11,29 @@ else{
         },
     }).then(res => {
         res.json().then(res => {
-            console.log(res); 
+            $rentcar_search_btn.addEventListener('click', (event) => {
+                event.preventDefault();
+                createCard(res['rental_car_pick']);
+            })
             createCard(res['rental_car_pick']);
         })
     })
 }
 
 function createCard(pick_list){
-    fetch(url + 'traffic/rentalcar/', {
+    const $rentcar_checkin_date = document.querySelector('.rentcar_checkin_date').value;
+    const $rentcar_checkout_date = document.querySelector('.rentcar_checkout_date').value;
+    fetch(url + `traffic/rentalcar/?start_at=${$rentcar_checkin_date}&end_at=${$rentcar_checkout_date}`, {
         headers: {
             'Content-Type': 'application/multipart',
         }
     }).then(res => res.json())
     .then(res => {
-        console.log(res);
+        const $product_items = document.querySelector('.product_items');
+        $product_items.innerHTML = '';
         res.forEach(element => {
-            console.log(element);
             const $rentalcar_id = element['id'];
-            const $product_items = document.querySelector('.product_items');
             const $product_image = element['car_image'];
-            
-            console.log($product_image.image);
             card_html = ''
             card_html += `
             <div class="col-md-4 mb-5 product-item">
@@ -54,11 +54,11 @@ function createCard(pick_list){
             
             if (pick_list.includes(element['id'])){
                 card_html += `
-                                <a class="btn pick-btn-${element['id']}"><i class="fa-solid fa-heart fs-2"></i></a>
+                                <a class="btn pick-btn-${element['id']}"><i class="fa-solid fa-heart fs-2 "></i></a>
                 `
             } else {
                 card_html += `
-                                <a class="btn pick-btn-${element['id']}"><i class="fa-regular fa-heart fs-2"></i></a>
+                                <a class="btn pick-btn-${element['id']}"><i class="fa-regular fa-heart fs-2 "></i></a>
                 `
             }
             card_html += `
@@ -70,7 +70,7 @@ function createCard(pick_list){
                                 <tbody>
                                     <tr>
                                         <td class="pe-2"><strong>가격:</strong></td>
-                                        <td class="price"><strong>${element['price']}</strong> / 24시간</td>
+                                        <td class="price"><strong>${element['price_form']}</strong> / 24시간</td>
                                     </tr>
                                     <tr>
                                         <td class="pe-2"><i class="fa-solid fa-star"
@@ -91,15 +91,13 @@ function createCard(pick_list){
             if (pick_list.includes(element['id'])){
                 const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
                 $pick_btn.addEventListener('click', (event) => {
-                    console.log($pick_btn);
-                    fetch(url + `pick/reltal_car/${$rentalcar_id}/`, {
+                    fetch(url + `pick/rental_car/${$rentalcar_id}/`, {
                         method: 'DELETE',   
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
                             'Content-Type': 'application/json',
                         },
                     }).then((res) => {
-                        console.log(res.json())
                         $pick_btn.innerHTML = '<i class="fa-regular fa-heart fs-2"></i></button>'
                         pick_list.splice(pick_list.indexOf(element['id']), 1);
                         window.location.reload();
