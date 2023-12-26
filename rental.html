@@ -23,8 +23,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Old+Standard+TT:wght@400;700&display=swap"
 		rel="stylesheet">
-	<!-- script
-    ================================================== -->
+
 	<script src="js/modernizr.js"></script>
 </head>
 
@@ -168,17 +167,17 @@
 			<div class="d-flex flex-column">
 				<ul class="nav nav-tabs d-flex flex-row nav-pills">
 					<li class="nav-item hetel_btn" role="presentation">
-						<a class="nav-link active" data-toggle="tab" href="#hotel">Hotel</a>
+						<a class="nav-link" data-toggle="tab" href="index.html#hotel">Hotel</a>
 					</li>
 					<li class="nav-item transport_btn" role="presentation">
 						<a class="nav-link" data-toggle="tab" href="transport.html#transport">Transport</a>
 					</li>
 					<li class="nav-item rentcar_btn" role="presentation">
-						<a class="nav-link" data-toggle="tab" href="rental.html#rentcar">Rent Car</a>
+						<a class="nav-link active" data-toggle="tab" href="#rentcar">Rent Car</a>
 					</li>
 				</ul>
 				<div class="tab-content">
-					<div id="hotel" class="tab-pane active" role="tabpanel">
+					<div id="hotel" class="tab-pane" role="tabpanel">
 						<form id="hotel-form" class="form-group flex-wrap bg-light p-3 border">
 							<div class="row">
 								<div class="col-lg-6 my-4">
@@ -263,7 +262,7 @@
 							</div>
 						</form>
 					</div>
-					<div id="rentcar" class="tab-pane" role="tabpanel">
+					<div id="rentcar" class="tab-pane active" role="tabpanel">
 						<form id="rentcar-form" class="form-group flex-wrap bg-light p-3 border">
 							<div class="row">
 								<div class="col-lg-6 my-4">
@@ -357,7 +356,9 @@
 	<script src="https://kit.fontawesome.com/fd0973be19.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/custom/common.js"></script>
 	<script type="text/javascript" src="js/custom/index.js"></script>
-	<script type="text/javascript" src="js/custom/main_lodging_list.js"></script>
+	<!-- <script type="text/javascript" src="js/custom/main_lodging_list.js"></script> -->
+	<!-- <script type="text/javascript" src="js/custom/main_lodging_list_hotel.js"></script> -->
+	<script type="text/javascript" src="js/custom/main_rentcar_list.js"></script>
 </body>
 
 </html>
