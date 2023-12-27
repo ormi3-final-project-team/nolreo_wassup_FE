@@ -86,7 +86,7 @@ function createCard(pick_list){
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="btn btn-small btn-black btn-pill mt-3">More Details</a>
+                            <a href="traffic_reservation.html?bus_id=${$bus_id}" class="btn btn-small btn-black btn-pill mt-3">예매하기</a>
                         </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@ function createCard2(pick_list){
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="btn btn-small btn-black btn-pill mt-3">More Details</a>
+                            <a href="traffic_reservation.html?train_id=${$train_id}" class="btn btn-small btn-black btn-pill mt-3">예매하기</a>
                         </div>
                     </div>
                 </div>
