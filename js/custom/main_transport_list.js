@@ -60,11 +60,11 @@ function createCard(pick_list){
             `
             if (pick_list.includes(element['id'])){
                 card_html += `
-                                <a class="btn pick-btn-${element['id']}"><i class="fa-solid fa-heart fs-2"></i></a>
+                                <a class="btn bus-pick-btn-${element['id']}"><i class="fa-solid fa-heart fs-2"></i></a>
                 `
             } else {
                 card_html += `
-                                <a class="btn pick-btn-${element['id']}"><i class="fa-regular fa-heart fs-2"></i></a>
+                                <a class="btn bus-pick-btn-${element['id']}"><i class="fa-regular fa-heart fs-2"></i></a>
                 `
             }
 
@@ -96,8 +96,8 @@ function createCard(pick_list){
             $product_items.insertAdjacentHTML('beforeend', card_html);
             
             if (pick_list.includes(element['id'])){
-                const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
-                $pick_btn.addEventListener('click', (event) => {
+                const $bus_pick_btn = document.querySelector(`.bus-pick-btn-${element['id']}`);
+                $bus_pick_btn.addEventListener('click', (event) => {
                     fetch(url + `pick/bus/${$bus_id}/`, {
                         method: 'DELETE',   
                         headers: {
@@ -105,14 +105,14 @@ function createCard(pick_list){
                             'Content-Type': 'application/json',
                         },
                     }).then((res) => {
-                        $pick_btn.innerHTML = '<i class="fa-regular fa-heart fs-2"></i></button>'
+                        $bus_pick_btn.innerHTML = '<i class="fa-regular fa-heart fs-2"></i></button>'
                         pick_list.splice(pick_list.indexOf(element['id']), 1);
                         window.location.reload();
                     });
                 })
             }else{ 
-                const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
-                $pick_btn.addEventListener('click', (event) => {
+                const $bus_pick_btn = document.querySelector(`.bus-pick-btn-${element['id']}`);
+                $bus_pick_btn.addEventListener('click', (event) => {
                     fetch(url + 'pick/bus/', {
                         method: 'POST',
                         headers: {
@@ -126,7 +126,7 @@ function createCard(pick_list){
                         }),
                     }).then((res) => {
                         if (res.status === 201) {
-                            $pick_btn.innerHTML = '<i class="fa-solid fa-heart fs-2"></i></button>'
+                            $bus_pick_btn.innerHTML = '<i class="fa-solid fa-heart fs-2"></i></button>'
                             window.location.reload();
                         }else{
                             alert('찜을 실패하였습니다.');
@@ -177,11 +177,11 @@ function createCard2(pick_list){
             
             if (pick_list.includes(element['id'])){
                 card_html += `
-                                <a class="btn pick-btn-${element['id']}"><i class="fa-solid fa-heart fs-2"></i></a>
+                                <a class="btn train-pick-btn-${element['id']}"><i class="fa-solid fa-heart fs-2"></i></a>
                 `
             } else {
                 card_html += `
-                                <a class="btn pick-btn-${element['id']}"><i class="fa-regular fa-heart fs-2"></i></a>
+                                <a class="btn train-pick-btn-${element['id']}"><i class="fa-regular fa-heart fs-2"></i></a>
                 `
             }
 
@@ -213,8 +213,8 @@ function createCard2(pick_list){
             $product_items.insertAdjacentHTML('beforeend', card_html);
             
             if (pick_list.includes(element['id'])){
-                const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
-                $pick_btn.addEventListener('click', (event) => {
+                const $train_pick_btn = document.querySelector(`.train-pick-btn-${element['id']}`);
+                $train_pick_btn.addEventListener('click', (event) => {
                     fetch(url + `pick/train/${$train_id}/`, {
                         method: 'DELETE',   
                         headers: {
@@ -222,14 +222,14 @@ function createCard2(pick_list){
                             'Content-Type': 'application/json',
                         },
                     }).then((res) => {
-                        $pick_btn.innerHTML = '<i class="fa-regular fa-heart fs-2"></i></button>'
+                        $train_pick_btn.innerHTML = '<i class="fa-regular fa-heart fs-2"></i></button>'
                         pick_list.splice(pick_list.indexOf(element['id']), 1);
                         window.location.reload();
                     });
                 })
             }else{
-                const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
-                $pick_btn.addEventListener('click', (event) => {
+                const $train_pick_btn = document.querySelector(`.train-pick-btn-${element['id']}`);
+                $train_pick_btn.addEventListener('click', (event) => {
                     fetch(url + 'pick/train/', {
                         method: 'POST',
                         headers: {
@@ -243,7 +243,7 @@ function createCard2(pick_list){
                         }),
                     }).then((res) => {
                         if (res.status === 201) {
-                            $pick_btn.innerHTML = '<i class="fa-solid fa-heart fs-2"></i></button>'
+                            $train_pick_btn.innerHTML = '<i class="fa-solid fa-heart fs-2"></i></button>'
                             window.location.reload();
                         }else{
                             alert('찜을 실패하였습니다.');
