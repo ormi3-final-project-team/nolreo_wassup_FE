@@ -29,15 +29,12 @@ function createCard(pick_list){
         }
     }).then(res => res.json())
     .then(res => {
-        console.log(res);
         const $product_items = document.querySelector('.product_items');
         $product_items.innerHTML = '';
         res.forEach(element => {
-            console.log(element);
             const $lodging_id = element['id'];
             const $product_image = element['lodging_image'];
             
-            console.log($product_image.image);
             card_html = ''
             card_html += `
             <div class="col-md-4 mb-5 product-item">
@@ -95,7 +92,6 @@ function createCard(pick_list){
             if (pick_list.includes(element['id'])){
                 const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
                 $pick_btn.addEventListener('click', (event) => {
-                    console.log($pick_btn);
                     fetch(url + `pick/lodging/${$lodging_id}/`, {
                         method: 'DELETE',   
                         headers: {
@@ -103,7 +99,6 @@ function createCard(pick_list){
                             'Content-Type': 'application/json',
                         },
                     }).then((res) => {
-                        console.log(res.json())
                         $pick_btn.innerHTML = '<i class="fa-regular fa-heart fs-2"></i></button>'
                         pick_list.splice(pick_list.indexOf(element['id']), 1);
                         window.location.reload();

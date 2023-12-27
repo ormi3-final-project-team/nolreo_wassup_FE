@@ -184,14 +184,14 @@
 									<label for="exampleInputEmail1" class="form-label text-black">체크 인</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+											max="2024-12-31" class="form-control ps-3 me-3">
 									</div>
 								</div>
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">체크 아웃</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+											max="2024-12-31" class="form-control ps-3 me-3">
 									</div>
 								</div>
 							</div>
@@ -218,14 +218,14 @@
 									<label for="exampleInputEmail1" class="form-label text-black">출발 날짜</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+											max="2024-12-31" class="form-control ps-3 me-3">
 									</div>
 								</div>
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">도착 날짜</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+											max="2024-12-31" class="form-control ps-3 me-3">
 									</div>
 								</div>
 							</div>
@@ -269,42 +269,19 @@
 									<label for="exampleInputEmail1" class="form-label text-black">대여 날짜</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+											max="2024-12-31" class="form-control ps-3 me-3 rentcar_checkin_date">
 									</div>
 								</div>
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">반납 날짜</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+											max="2024-12-31" class="form-control ps-3 me-3 rentcar_checkout_date">
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-lg-4 my-4">
-									<label for="departure" class="form-label text-black">출발지</label>
-									<select id="departure" name="departure" class="form-control ps-4 input-width">
-										<option value="" selected disabled>선택해주세요</option>
-										<option value="seoul">서울</option>
-										<option value="busan">부산</option>
-									</select>
-								</div>
-								<div class="col-lg-4 my-4">
-									<label for="departure" class="form-label text-black">반납지</label>
-									<select id="departure" name="departure" class="form-control ps-4 input-width">
-										<option value="" selected disabled>선택해주세요</option>
-										<option value="seoul">서울</option>
-										<option value="busan">부산</option>
-									</select>
-								</div>
-								<div class="col-lg-4 my-4">
-									<label for="exampleInputEmail1" class="form-label text-black">인원</label>
-									<input type="number" value="1" name="quantity"
-										class="form-control ps-4 input-width">
-								</div>
-							</div>
 							<div class="d-grid mb-3">
-								<button class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6">검색</button>
+								<button class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6 rentcar_search_btn">검색</button>
 							</div>
 						</form>
 					</div>
@@ -356,8 +333,6 @@
 	<script src="https://kit.fontawesome.com/fd0973be19.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/custom/common.js"></script>
 	<script type="text/javascript" src="js/custom/index.js"></script>
-	<!-- <script type="text/javascript" src="js/custom/main_lodging_list.js"></script> -->
-	<!-- <script type="text/javascript" src="js/custom/main_lodging_list_hotel.js"></script> -->
 	<script type="text/javascript" src="js/custom/main_rentcar_list.js"></script>
 </body>
 

@@ -1,4 +1,5 @@
 const accessToken = localStorage.getItem('access');
+const $transport_search_btn = document.querySelector('.transport_search_btn');
 
 if (accessToken === null) {
     createCard([]);
@@ -11,7 +12,13 @@ else{
         },
     }).then(res => {
         res.json().then(res => {
-            console.log(res); 
+            $transport_search_btn.addEventListener('click', (event) => {
+                event.preventDefault();
+                createCard(res['bus_pick']);
+                createCard2(res['train_pick']);
+                const $product_items = document.querySelector('.product_items');
+                $product_items.innerHTML = '';
+            })
             createCard(res['bus_pick']);
             createCard2(res['train_pick']);
         })
@@ -20,17 +27,19 @@ else{
 
 
 function createCard(pick_list){
-    fetch(url + 'traffic/bus', {
+    const $transport_checkout_date = document.querySelector('.transport_checkout_date').value;
+    const $transport_checkin_date = document.querySelector('.transport_checkin_date').value;
+    const $transport_dest = encodeURIComponent(document.querySelector('.transport_dest').value);
+    const $transport_depart = encodeURIComponent(document.querySelector('.transport_depart').value);
+    fetch(url + `traffic/bus/?depart_time=${$transport_checkin_date}&arrival_time=${$transport_checkout_date}&depart_point=${$transport_depart}&dest_point=${$transport_dest}`, {
         headers: {
             'Content-Type': 'application/multipart',
         }
     }).then(res => res.json())
     .then(res => {
-        console.log(res);
+        const $product_items = document.querySelector('.product_items');
         res.forEach(element => {
-            console.log(element);
             const $bus_id = element['id'];
-            const $product_items = document.querySelector('.product_items');
             $depart_time = element['depart_time']
             $depart_time = $depart_time.split('T')
             $depart_time = $depart_time[0] + ' ' + $depart_time[1].split('.')[0]
@@ -49,7 +58,6 @@ function createCard(pick_list){
                             </h3>
                             <div class="like_svg">
             `
-            
             if (pick_list.includes(element['id'])){
                 card_html += `
                                 <a class="btn pick-btn-${element['id']}"><i class="fa-solid fa-heart fs-2"></i></a>
@@ -74,7 +82,7 @@ function createCard(pick_list){
                                 <tbody>
                                     <tr>
                                         <td class="pe-2"><strong>가격:</strong></td>
-                                        <td class="price"><strong>${element['price']}</strong></td>
+                                        <td class="price"><strong>${element['price_form']}</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -90,7 +98,6 @@ function createCard(pick_list){
             if (pick_list.includes(element['id'])){
                 const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
                 $pick_btn.addEventListener('click', (event) => {
-                    console.log($pick_btn);
                     fetch(url + `pick/bus/${$bus_id}/`, {
                         method: 'DELETE',   
                         headers: {
@@ -98,13 +105,12 @@ function createCard(pick_list){
                             'Content-Type': 'application/json',
                         },
                     }).then((res) => {
-                        console.log(res.json())
                         $pick_btn.innerHTML = '<i class="fa-regular fa-heart fs-2"></i></button>'
                         pick_list.splice(pick_list.indexOf(element['id']), 1);
                         window.location.reload();
                     });
                 })
-            }else{
+            }else{ 
                 const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
                 $pick_btn.addEventListener('click', (event) => {
                     fetch(url + 'pick/bus/', {
@@ -135,15 +141,19 @@ function createCard(pick_list){
 
 
 function createCard2(pick_list){
-    fetch(url + 'traffic/train', {
+    const $transport_checkout_date = document.querySelector('.transport_checkout_date').value;
+    const $transport_checkin_date = document.querySelector('.transport_checkin_date').value;
+    const $transport_dest = encodeURIComponent(document.querySelector('.transport_dest').value);
+    const $transport_depart = encodeURIComponent(document.querySelector('.transport_depart').value);
+    fetch(url + `traffic/train/?depart_time=${$transport_checkin_date}&arrival_time=${$transport_checkout_date}&depart_point=${$transport_depart}&dest_point=${$transport_dest}`, {
         headers: {
             'Content-Type': 'application/multipart',
         }
     }).then(res => res.json())
     .then(res => {
-        console.log(res);
+        const $product_items = document.querySelector('.product_items');
+        // $product_items.innerHTML = '';
         res.forEach(element => {
-            console.log(element);
             const $train_id = element['id'];
             const $product_items = document.querySelector('.product_items');
             $depart_time = element['depart_time']
@@ -189,7 +199,7 @@ function createCard2(pick_list){
                                 <tbody>
                                     <tr>
                                         <td class="pe-2"><strong>가격:</strong></td>
-                                        <td class="price"><strong>${element['price']}</strong></td>
+                                        <td class="price"><strong>${element['price_form']}</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -205,7 +215,6 @@ function createCard2(pick_list){
             if (pick_list.includes(element['id'])){
                 const $pick_btn = document.querySelector(`.pick-btn-${element['id']}`);
                 $pick_btn.addEventListener('click', (event) => {
-                    console.log($pick_btn);
                     fetch(url + `pick/train/${$train_id}/`, {
                         method: 'DELETE',   
                         headers: {
@@ -213,7 +222,6 @@ function createCard2(pick_list){
                             'Content-Type': 'application/json',
                         },
                     }).then((res) => {
-                        console.log(res.json())
                         $pick_btn.innerHTML = '<i class="fa-regular fa-heart fs-2"></i></button>'
                         pick_list.splice(pick_list.indexOf(element['id']), 1);
                         window.location.reload();
