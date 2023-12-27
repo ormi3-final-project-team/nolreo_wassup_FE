@@ -1,4 +1,3 @@
-// const $reservation_container = document.querySelector('.reservation-container');
 const $img_container = document.querySelector('.img-container');
 const $thum_container = document.querySelector('.thum-container');
 const $hotel_location = document.querySelector('.hotel_location');
@@ -9,13 +8,16 @@ const $room_container = document.querySelector('.room-container');
 const $notice = document.querySelector('.notice');
 const $review_container = document.querySelector('.review_container');
 const $intro = document.querySelector('.intro');
+const $info = document.querySelector('.info');
 const $amenity_container = document.querySelector('.amenity_container');
 const urlParams = new URLSearchParams(window.location.search);
 const $check_in = document.querySelector('.check-in');
 const $check_out = document.querySelector('.check-out');
 const $reservation_btn = document.querySelector('.reservation-btn');
 const $room_type = document.querySelector('.choose-room');
-
+const accessToken = localStorage.getItem('access');
+const lodging_id = urlParams.get('id');
+const $heart_button = document.querySelector('#heart-button');
 
 fetch(url + `lodging/roomtype/?lodging_id=${urlParams.get('id')}`, {
     method: 'GET',
@@ -35,7 +37,6 @@ fetch(url + `lodging/roomtype/?lodging_id=${urlParams.get('id')}`, {
         const selectedRoomId = document.getElementById('room-type').value;
         const checkinDate = $check_in.value;
         const checkoutDate = $check_out.value;
-        console.log(selectedRoomId, checkinDate, checkoutDate);
         window.location.href = `lodging_reservation.html?room_id=${selectedRoomId}&check_in=${checkinDate}&check_out=${checkoutDate}`;
     });
 })
@@ -82,6 +83,8 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
     $notice.textContent = `${notice}`;
     const intro = datas['intro'];
     $intro.textContent = `${intro}`;
+    const info = datas['info'];
+    $info.textContent = `${info}`;
     const amenities = datas['amenities'];
     amenities.forEach(amenity => {
         const amenity_tag = `
@@ -89,7 +92,6 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
         `
         $amenity_container.insertAdjacentHTML('beforeend', amenity_tag);
     })
-
     fetch(url + `lodging/roomtype/?lodging_id=${urlParams.get('id')}`, {
         method: 'GET',
         headers: {
@@ -119,7 +121,6 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
             `);
         })
     })
-    
     fetch(url + `lodging/review/?lodging_id=${urlParams.get('id')}`, {
         method: 'GET',
         headers: {
@@ -128,12 +129,11 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
         },
     }).then(response => response.json())
     .then(review_datas => {
-        console.log('review_datas', review_datas);
         review_datas.forEach(data => {
             let container_id = data['id'];
             let reviewImageHTML = '';
             if (data['review_images'][0]) {
-                reviewImageHTML = `<img src="${url + data['review_images'].substr(1)}">`;
+                reviewImageHTML = `<img src="${url + data['review_images'][0].substr(1)}">`;
             }
             let profile_image = '';
             if (data['image']) {
@@ -146,7 +146,6 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
                 </svg>
                 `
             }
-            
             $review_container.insertAdjacentHTML('beforeend', `
             <div class="comment-list review_container">
                 <article class="comment-item pb-3 row">
@@ -191,22 +190,16 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
                 </div>
                 `);
             });
-            
             const $reply_btn = document.querySelector(`.reply-btn${container_id}`);
             $reply_btn.addEventListener('click', function(e){
                 e.preventDefault(); 
-                console.log('reply_btn');
                 const $formContainer = document.querySelector(`.reply-form-container${container_id}`);
                 $formContainer.style.display = $formContainer.style.display === 'none' ? 'block' : 'none';
             });
-
             const $submit_reply = document.querySelector(`.submit-reply${container_id}`);
             $submit_reply.addEventListener('click', function(e){
                 e.preventDefault();
                 const replyText = document.querySelector(`.reply-text${container_id}`);
-                console.log('replyText.value', replyText.value);
-                console.log('$comment_container', $comment_container);
-                
                 fetch(url + 'lodging/review/1/comment/', {
                     method: 'POST',
                     headers: {
@@ -230,11 +223,7 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
                     </div>
                     `)
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
             });
-
             document.querySelector('.review_btn').addEventListener('click', function(e){
                 e.preventDefault();
                 fetch(url + `account/${localStorage.getItem('id')}/`, {
@@ -274,4 +263,63 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
             
         })
     })
+    fetch(url + `account/${user_id}/`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+        },
+    }).then(res => {
+        res.json().then(res => {
+            let pick_list = res['lodging_pick'];
+            if (pick_list.includes(parseInt(lodging_id))){
+                const $heart_button = document.querySelector('#heart-button');
+                $heart_button.style.fill = 'red';
+            }
+            document.getElementById('heart-button').addEventListener('click', function() {
+                manageFavoriteLodging(accessToken, user_id, lodging_id, pick_list);
+            });
+        })
+    });
+    function manageFavoriteLodging(accessToken, user_id, lodging_id, pick_list) {
+        const heartButton = document.getElementById('heart-button');
+        if (pick_list.includes(parseInt(lodging_id))){
+            fetch(url + `pick/lodging/${lodging_id}/`, {
+                method: 'DELETE',   
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json',
+                },
+            }).then((res) => {
+                if (res.status === 204) {
+                    alert('찜 삭제를 성공했습니다.');
+                    pick_list.splice(pick_list.indexOf(lodging_id), 1);
+                    heartButton.style.fill = 'currentColor';
+                } else {
+                    alert('찜 삭제를 실패하였습니다.');
+                }
+            });
+        } else {
+            fetch(url + 'pick/lodging/', {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pick_type : 'LG',
+                    user : user_id,
+                    lodging : lodging_id,
+                }),
+            }).then((res) => {
+                if (res.status === 201) {
+                    alert('찜을 성공했습니다.');
+                    pick_list.push(parseInt(lodging_id));
+                    heartButton.style.fill = 'red';
+                } else {
+                    alert('찜을 실패하였습니다.');
+                }
+            });
+        }
+    }
 })
+
