@@ -40,7 +40,7 @@ function createCard(pick_list){
             <div class="col-md-4 mb-5 product-item">
                 <div class="product-card position-relative overflow-hidden">
                     <div class="image-holder lodging_image">
-                        <a href="room-details.html"> <img src="${url+$product_image.image}" alt="image"
+                        <a href="lodging-details.html?id=${$lodging_id}"> <img src="${url+$product_image.image}" alt="image"
                                 class="img-fluid overflow-hidden lodging_images"> </a>
                     </div>
                     <div class="product-detail">
@@ -80,7 +80,7 @@ function createCard(pick_list){
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="btn btn-small btn-black btn-pill mt-3">More Details</a>
+                            <a href="lodging-details.html?id=${$lodging_id}" class="btn btn-small btn-black btn-pill mt-3">More Details</a>
                         </div>
                     </div>
                 </div>
