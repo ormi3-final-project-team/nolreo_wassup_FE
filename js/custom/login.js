@@ -18,9 +18,11 @@ $login_btn.addEventListener('click', (event) => {
         if (res.status === 200) {
             alert('로그인 성공!');
             res.json().then((data) => {
+                console.log(data);
                 localStorage.setItem('access', data['access']);
                 localStorage.setItem('refresh', data['refresh']);
                 localStorage.setItem('id', data['user_id']);
+                localStorage.setItem('nickname', data['nickname']);
             })
             window.location.href = 'index.html';
         } else {

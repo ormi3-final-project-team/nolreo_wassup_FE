@@ -252,33 +252,7 @@
                                     <div class="row my-5">
                                         <div class="comments-wrap">
                                             <div class="comment-list review_container">
-                                                <article class="comment-item pb-3 row">
-                                                    <div class="col-md-1">
-                                                        <img src="images/commentor-item1.jpg" alt="default"
-                                                            class="commentor-image img-fluid rounded-circle">
-                                                    </div>
-                                                    <div class="col-md-10">
-                                                        <div class="author-post mb-4">
-                                                            <div
-                                                                class="comment-meta mb-2 text-capitalize d-flex gap-3 text-black">
-                                                                <div class="author-name fs-5  ">닉네임</div>
-                                                                <span class=" ">2023.12.21</span>
-                                                            </div>
-                                                            <p>리뷰 내용</p>
-                                                            <div class="comments-reply border-animation">
-                                                                <a href="#" class="reply-btn">
-                                                                    <i class="icon icon-mail-reply"></i>Reply
-                                                                </a>
-                                                                <div class="reply-form-container" style="display: none;">
-                                                                    <form class="reply-form">
-                                                                        <textarea class="reply-text"></textarea>
-                                                                        <button type="submit" class="submit-reply">Submit</button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>                                                            
-                                                        </div>
-                                                    </div>
-                                                </article>
+                                                
                                             </div>
                                             <div class="comment-respond">
                                                 <form method="post" class="form-group padding-small">
@@ -369,48 +343,42 @@
                         </article>
                     </div>
                 </main>
-                <!-- <aside class="col-md-3"> -->
-                <div class="col-md-3">
-                    <form id="form" class="form-group flex-wrap bg-light p-3 border">
-                        <h2 class=" fs-2 text-black my-3 mb-5">객실 선택</h2>
-                        <div class="col-lg-12 my-4">
-                            <label for="checkin" class="form-label text-black">Check-In</label>
-                            <div class="input-group date" id="datepicker">
-                                <input type="date" id="start_at" name="appointment" min="2023-12-21" max="2024-12-31"
-                                    class="form-control ps-3 me-3 start_at">
+                <aside class="col-md-3">
+                    <div class=" ">
+                        <form id="form" class="form-group flex-wrap bg-light p-3 border">
+                            <h2 class=" fs-2 text-black my-3 mb-5">Reserve Now</h2>
+                            <div class="col-lg-12 my-4">
+                                <label for="exampleInputEmail1" class="form-label text-black">Check-In</label>
+                                <div class="input-group date" id="datepicker">
+                                    <input type="date" id="start" name="appointment" min="2023-01-01" max="2023-12-31"
+                                        class="form-control ps-3 me-3 check-in">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12 my-4">
-                            <label for="checkout" class="form-label text-black">Check-Out</label>
-                            <div class="input-group date" id="datepicker">
-                                <input type="date" id="end_at" name="appointment" min="2023-12-21" max="2024-12-31"
-                                    class="form-control ps-3 me-3 end_at">
+                            <div class="col-lg-12 my-4">
+                                <label for="exampleInputEmail1" class="form-label text-black">Check-Out</label>
+                                <div class="input-group date" id="datepicker">
+                                    <input type="date" id="start" name="appointment" min="2023-01-01" max="2023-12-31"
+                                        class="form-control ps-3 me-3 check-out">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12 my-4">
-                            <label for="rooms" class="form-label text-black">Room Type</label>
-                            <select class="room-select form-control ps-3" name="room-type" id="room-type">
-                                <option value="1">Suite</option>
-                                <option value="2">Deluxe</option>
-                                <option value="3">Premier King</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-12 my-4">
-                            <label for="adults" class="form-label text-black">Adult</label>
-                            <input type="number" value="1" name="quantity" class="form-control ps-3 adults">
-                        </div>
-                        <div class="col-lg-12 my-4">
-                            <label for="Childrens" class="form-label text-black">Children</label>
-                            <input type="number" value="0" name="quantity" class="form-control ps-3 childrens">
-                        </div>
-                        <div class="d-grid mb-3">
-                            <button
-                                class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6 lodging-details-reservation-btn">
-                                예약 </button>
-                        </div>
-                    </form>
-                </div>
-                <!-- </aside> -->
+                            <div class="col-lg-12 my-4">
+                                <label for="rooms" class="form-label text-black">Room Type</label>
+                                <select class="room-select form-control ps-3 choose-room" name="room-type" id="room-type">
+                                </select>
+                            <div class="col-lg-12 my-4">
+                                <label for="exampleInputEmail1" class="form-label text-black">Adult</label>
+                                <input type="number" value="1" name="quantity" class="form-control ps-3">
+                            </div>
+                            <div class="col-lg-12 my-4">
+                                <label for="exampleInputEmail1" class="form-label text-black">Children</label>
+                                <input type="number" value="0" name="quantity" class="form-control ps-3">
+                            </div>
+                            <div class="d-grid mb-3">
+                                <button class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6 reservation-btn">예약</button>
+                            </div>
+                        </form>
+                    </div>
+                </aside>
             </div>
         </div>
     </div>
