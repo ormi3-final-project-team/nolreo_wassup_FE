@@ -56,12 +56,18 @@ function createLodgingCard(data) {
         },
     }).then((response) => response.json())
     .then((room_data) => {
+        let img_src = '';
+        if (room_data['room_image'] == null) {
+            img_src = 'images/item1.jpg';
+        }else{
+            img_src = url + room_data['room_image']['image'].substr(1);
+        }
         $lodging_reservation_container.innerHTML += `
         <div class="col-md-12">
             <div class="d-flex d-row justify-content-between mt-5">
                 <div class="col-md-5">
                     <div class="swiper-slide">
-                        <img src="${url + room_data['room_image']['image'].substr(1)}" alt="image" class="thumb-image img-fluid" style="height: 100%;">
+                        <img src="${img_src}" alt="image" class="thumb-image img-fluid" style="height: 100%;">
                     </div>
                 </div>
                 <div class="col-md-6">
