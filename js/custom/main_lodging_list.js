@@ -29,19 +29,28 @@ function createCard(pick_list){
         }
     }).then(res => res.json())
     .then(res => {
+        console.log(res);
         const $product_items = document.querySelector('.product_items');
         $product_items.innerHTML = '';
         res.forEach(element => {
             const $lodging_id = element['id'];
-            const $product_image = element['lodging_image'];
+            // const $product_image = element['lodging_image'][0]['image'];
+            let product_image_tag = ''
+            if (element['lodging_image']){
+                product_image_tag = `<img src="${url+element['lodging_image']['image'].substr(1)}" alt="image"
+                                class="img-fluid overflow-hidden lodging_images"></img>`
+            }
+            else{
+                product_image_tag = `<img src="images/lodging.jpg" alt="image"
+                                class="img-fluid overflow-hidden lodging_images"></img>`
+            }
             
             card_html = ''
             card_html += `
             <div class="col-md-4 mb-5 product-item">
                 <div class="product-card position-relative overflow-hidden">
                     <div class="image-holder lodging_image">
-                        <a href="lodging-details.html?id=${$lodging_id}"> <img src="${url+$product_image.image}" alt="image"
-                                class="img-fluid overflow-hidden lodging_images"> </a>
+                        <a href="lodging-details.html?id=${$lodging_id}">${product_image_tag}</a>
                     </div>
                     <div class="product-detail">
                         <div class="lodging_id" value="${element['id']}" hidden></div>
