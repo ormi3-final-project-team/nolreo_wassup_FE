@@ -67,6 +67,7 @@ function createCard_bus(){
                 }).then((res) => {
                     if (res.status === 201) {
                         alert('예약이 완료되었습니다.');
+                        window.location.href = 'transport.html';
                     } else {
                         res.json().then((json) => {
                             alert(json);
