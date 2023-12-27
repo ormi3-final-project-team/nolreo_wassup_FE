@@ -51,21 +51,21 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
         if (image['is_main'] === true) {
             const img_tag = `
             <div class="swiper-slide">
-                <img src="${url + image['image']}" alt="product-large" class="thumb-image img-fluid">
+                <img src="${url + image['image'].substr(1)}" alt="product-large" class="thumb-image img-fluid">
             </div>
             `
             $img_container.insertAdjacentHTML('beforeend', img_tag);
         }else{
             const img_tag = `
             <div class="swiper-slide">
-                <img src="${url + image['image']}" alt="product-large" class="img-fluid">
+                <img src="${url + image['image'].substr(1)}" alt="product-large" class="img-fluid">
             </div>
             `
             $img_container.insertAdjacentHTML('beforeend', img_tag);
         }
         const thum_tag = `
         <div class="swiper-slide">
-            <img src="${url + image['image']}" alt="image" class="thumb-image img-fluid">
+            <img src="${url + image['image'].substr(1)}" alt="image" class="thumb-image img-fluid">
         </div>
         `
         $thum_container.insertAdjacentHTML('beforeend', thum_tag);
@@ -103,7 +103,7 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
             <div class="d-flex d-row justify-content-between">
                 <div class="col-md-5">
                     <div class="swiper-slide room_thumb">
-                        <img src="${url + data['room_image']['image']}" alt="image" class="thumb-image img-fluid">
+                        <img src="${url + data['room_image']['image'].substr(1)}" alt="image" class="thumb-image img-fluid">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -133,11 +133,11 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
             let container_id = data['id'];
             let reviewImageHTML = '';
             if (data['review_images'][0]) {
-                reviewImageHTML = `<img src="${url + data['review_images']}">`;
+                reviewImageHTML = `<img src="${url + data['review_images'].substr(1)}">`;
             }
             let profile_image = '';
             if (data['image']) {
-                profile_image = `<img src="${url + data['image']}" alt="default" heigth="50" width="50"
+                profile_image = `<img src="${url + data['image'].substr(1)}" alt="default" heigth="50" width="50"
                 class="commentor-image img-fluid rounded-circle">`;
             }else{
                 profile_image = `

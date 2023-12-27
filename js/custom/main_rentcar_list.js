@@ -39,7 +39,7 @@ function createCard(pick_list){
             <div class="col-md-4 mb-5 product-item">
                 <div class="product-card position-relative overflow-hidden">
                     <div class="image-holder lodging_image">
-                        <a href="rentalcar-details.html?id=${$rentalcar_id}"> <img src="${url+$product_image.image}" alt="image"
+                        <a href="rentalcar-details.html?id=${$rentalcar_id}"> <img src="${url+$product_image.image.substr(1)}" alt="image"
                                 class="img-fluid overflow-hidden lodging_images"> </a>
                     </div>
                     <div class="product-detail">

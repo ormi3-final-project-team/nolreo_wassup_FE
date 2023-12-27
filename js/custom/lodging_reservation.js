@@ -20,7 +20,7 @@ fetch(url + `account/${user_id}/`, {
 }
 
 function createCard(){
-    fetch(url + `/lodging/roomtype/${$room_type_id}/`, {
+    fetch(url + `lodging/roomtype/${$room_type_id}/`, {
         method: 'GET',
         }).then(res => {
             res.json().then(res => {
