@@ -16,7 +16,6 @@ $password_change_btn.addEventListener('click', (event) => {
         },
         body: formData
     }).then(res => {
-        console.log(res);
         if (res.status === 200) {
             alert('비밀번호 변경이 완료되었습니다.');
             window.location.href = 'profile.html';

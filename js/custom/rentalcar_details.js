@@ -176,7 +176,6 @@ fetch(url + `traffic/rentalcar/${urlParams.get('id')}`, {
                 .then(res => res.json())
                 .then(data => {
                     const $star_tag = document.querySelector("input[name='rating']:checked");
-                    console.log($star_tag);
                     let rating = '0';
                     if ($star_tag != null){
                         rating = $star_tag.value;

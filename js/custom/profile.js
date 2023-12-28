@@ -6,7 +6,6 @@ fetch(url + 'account/' + user_id + '/', {
     }
 }).then(res => res.json())
 .then(res => {
-    console.log(res);
     if (res['image'] != null) {
         document.querySelector('.profile-img').src = res['image'];
     }
@@ -22,7 +21,6 @@ secession_btn.addEventListener('click', () => {
             'Authorization': `Bearer ${access_token}`
         }
     }).then(res => {
-        console.log(res);
         if (res.status === 204) {
             alert('회원탈퇴가 완료되었습니다.');
             localStorage.removeItem('access');
