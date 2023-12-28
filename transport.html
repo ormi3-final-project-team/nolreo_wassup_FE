@@ -23,8 +23,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Old+Standard+TT:wght@400;700&display=swap"
 		rel="stylesheet">
-	<!-- script
-    ================================================== -->
+
 	<script src="js/modernizr.js"></script>
 </head>
 
@@ -168,31 +167,31 @@
 			<div class="d-flex flex-column">
 				<ul class="nav nav-tabs d-flex flex-row nav-pills">
 					<li class="nav-item hetel_btn" role="presentation">
-						<a class="nav-link active" data-toggle="tab" href="#hotel">Hotel</a>
+						<a class="nav-link" data-toggle="tab" href="index.html#hotel">Hotel</a>
 					</li>
 					<li class="nav-item transport_btn" role="presentation">
-						<a class="nav-link" data-toggle="tab" href="transport.html#transport">Transport</a>
+						<a class="nav-link active" data-toggle="tab" href="#transport">Transport</a>
 					</li>
 					<li class="nav-item rentcar_btn" role="presentation">
 						<a class="nav-link" data-toggle="tab" href="rental.html#rentcar">Rent Car</a>
 					</li>
 				</ul>
 				<div class="tab-content">
-					<div id="hotel" class="tab-pane active" role="tabpanel">
+					<div id="hotel" class="tab-pane" role="tabpanel">
 						<form id="hotel-form" class="form-group flex-wrap bg-light p-3 border">
 							<div class="row">
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">체크 인</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2024-12-31" class="form-control ps-3 me-3 hotel_checkin_date">
+											max="2024-12-31" class="form-control ps-3 me-3">
 									</div>
 								</div>
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">체크 아웃</label>
 									<div class="input-group date" id="datepicker">
 										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2024-12-31" class="form-control ps-3 me-3 hotel_checkout_date">
+											max="2024-12-31" class="form-control ps-3 me-3">
 									</div>
 								</div>
 							</div>
@@ -212,40 +211,46 @@
 							</div>
 						</form>
 					</div>
-					<div id="transport" class="tab-pane" role="tabpanel">
+					<div id="transport" class="tab-pane active" role="tabpanel">
 						<form id="transport-form" class="form-group flex-wrap bg-light p-3 border">
 							<div class="row">
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">출발 날짜</label>
 									<div class="input-group date" id="datepicker">
-										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2024-12-31" class="form-control ps-3 me-3">
+										<input type="datetime-local" id="start" name="appointment" min="2023-01-01"
+											max="2024-12-31" class="form-control ps-3 me-3 transport_checkin_date">
 									</div>
 								</div>
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">도착 날짜</label>
 									<div class="input-group date" id="datepicker">
-										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2024-12-31" class="form-control ps-3 me-3">
+										<input type="datetime-local" id="start" name="appointment" min="2023-01-01"
+											max="2024-12-31" class="form-control ps-3 me-3 transport_checkout_date">
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-3 my-4">
 									<label for="departure" class="form-label text-black">출발지</label>
-									<select id="departure" name="departure" class="form-control ps-4 input-width">
+									<select id="departure" name="departure" class="form-control ps-4 input-width transport_depart">
 										<option value="" selected disabled>선택해주세요</option>
-										<option value="seoul">서울</option>
-										<option value="busan">부산</option>
+										<option value='서울'>서울</option>
+										<option value="울산">울산</option>
+										<option value="전주">전주</option>
+										<option value="부산">부산</option>
+										<option value="start_test">start_test</option>
 										<!-- 기타 지역 -->
 									</select>
 								</div>
 								<div class="col-lg-3 my-4">
 									<label for="destination" class="form-label text-black">목적지</label>
-									<select id="destination" name="destination" class="form-control ps-4 input-width">
+									<select id="destination" name="destination" class="form-control ps-4 input-width transport_dest">
 										<option value="">선택해주세요</option>
-										<option value="seoul">서울</option>
-										<option value="busan">부산</option>
+										<option value='서울'>서울</option>
+										<option value='울산'>울산</option>
+										<option value="전주">전주</option>
+										<option value="부산">부산</option>
+										<option value="end_test">end_test</option>
 										<!-- 기타 지역 -->
 									</select>
 								</div>
@@ -259,7 +264,7 @@
 								</div>
 							</div>
 							<div class="d-grid mb-3">
-								<button class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6">검색</button>
+								<button class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6 transport_search_btn">검색</button>
 							</div>
 						</form>
 					</div>
@@ -269,15 +274,15 @@
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">대여 날짜</label>
 									<div class="input-group date" id="datepicker">
-										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+										<input type="datetime-local" id="start" name="appointment" min="2023-01-01T00:00"
+											max="2024-12-31T00:00" class="form-control ps-3 me-3">
 									</div>
 								</div>
 								<div class="col-lg-6 my-4">
 									<label for="exampleInputEmail1" class="form-label text-black">반납 날짜</label>
 									<div class="input-group date" id="datepicker">
-										<input type="date" id="start" name="appointment" min="2023-01-01"
-											max="2023-12-31" class="form-control ps-3 me-3">
+										<input type="datetime-local" id="start" name="appointment" min="2023-01-01"
+											max="2024-12-31" class="form-control ps-3 me-3">
 									</div>
 								</div>
 							</div>
@@ -357,7 +362,9 @@
 	<script src="https://kit.fontawesome.com/fd0973be19.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/custom/common.js"></script>
 	<script type="text/javascript" src="js/custom/index.js"></script>
-	<script type="text/javascript" src="js/custom/main_lodging_list.js"></script>
+	<!-- <script type="text/javascript" src="js/custom/main_lodging_list.js"></script> -->
+	<!-- <script type="text/javascript" src="js/custom/main_lodging_list_hotel.js"></script> -->
+	<script type="text/javascript" src="js/custom/main_transport_list.js"></script>
 </body>
 
 </html>

@@ -22,8 +22,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Old+Standard+TT:wght@400;700&display=swap"
         rel="stylesheet">
-    <!-- script
-    ================================================== -->
     <script src="js/modernizr.js"></script>
 </head>
 
@@ -135,31 +133,13 @@
 						<use xlink:href="#navbar-icon"></use>
 					</svg>
 				</button>
-				<div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar"
+				<div class="offcanvas offcanvas-end custom-navbar" tabindex="-1" id="bdNavbar"
 					aria-labelledby="bdNavbarOffcanvasLabel">
 					<div class="offcanvas-header px-4 pb-0">
 						<button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
 							aria-label="Close" data-bs-target="#bdNavbar"></button>
 					</div>
-					<div class="offcanvas-body text-hover light-border">
-						<ul id="navbar"
-							class="navbar-nav text-uppercase justify-content-lg-center justify-content-md-end align-items-center flex-grow-1 pe-3">
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase active" href="#">Login</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Signup</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Logout</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Profile</a>
-							</li>
-							<li class="nav-item pe-4">
-								<a class="nav-link light text-uppercase" href="#">Pick</a>
-							</li>
-					</div>
+					
 				</div>
 			</div>
 		</nav>
@@ -171,252 +151,76 @@
         <div class="container">
             <div class="sub-banner-content position-absolute">
                 <div id="about" class="container py-5 ">
-                    <h1 class="banner-title light display-1 text-capitalize">예약</h1>
+                    <h1 class="banner-title light display-1 text-capitalize">숙소 예약</h1>
                 </div>
             </div>
         </div>
     </section>
     <section class="checkout-wrap padding-large pt-5">
         <div class="container">
-            <div class="display-header d-flex justify-content-between pb-3">
+            <div class="display-header d-flex justify-content-center pb-3">
                 <h2 class="display-7 text-dark fw-normal">예약</h2>
             </div>
-            <form class="form-group mt-4">
-                <div class="row g-5">
-                    <div class="col-lg-6">
-                        <!-- <h4 class="text-dark pb-4">Details</h4> -->
+            <form class="form-group mt-4 d-flex justify-content-center">
+                <div class="row col-md-6">
+                    <div class="col-md-12">
                         <div class="billing-details">
-                            <form id="form" class="form-group flex-wrap">
+                            <form id="form" class="form-group">
                                 <div class="col-lg-12 mb-3">
-                                    <label for="hotelInput" class="label-style fw-medium form-label">호텔 이름</label>
-                                    <input id="hotelInput" class="form-control ps-3" type="text" readonly>
-                                </div>                                                               
+                                    <label for="roomInput" class="label-style fw-medium form-label">호텔 이름</label>
+                                    <text id="roomInput" class="form-control ps-3 lodging_name" type="text" readonly>
+                                    </text>
+                                </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label for="roomInput" class="label-style fw-medium form-label">방 정보</label>
-                                    <input id="roomInput" class="form-control ps-3" type="text" readonly>
-                                </div> 
-                                <div class="form-input col-lg-12 mb-3">
-                                    <label for="arrive-date" class="label-style fw-medium form-label">체크인 날짜</label>
-                                    <div class="form-input col-lg-12 d-flex mb-3">
-                                        <div class="input-group date" id="datepicker">
-                                            <input type="date" id="checkInDate" name="appointment" min="2023-01-01"
-                                                max="2023-12-31" class="form-control ps-3" readonly>
+                                    <label for="roomInput" class="label-style fw-medium form-label">객실 종류</label>
+                                    <text id="roomInput" class="form-control ps-3 lodging_room_type" type="text" readonly>
+                                    </text>
+                                </div>
+                                <div class="d-flex col-md-6 mb-3">
+                                    <div class="form-input col-lg-12">
+                                        <label for="arrive-date" class="label-style fw-medium form-label">체크인</label>
+                                        <div class="form-input col-lg-12 d-flex">
+                                            <div class="input-group date" id="datepicker">
+                                                <text type="date" name="schedule" min="2023-12-20" max="2024-12-30" class="form-control ps-3 lodging_checkin_time" readonly>
+                                                </text>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-input col-lg-12 mb-3">
-                                    <label for="return-date" class="label-style fw-medium form-label">체크아웃 날짜</label>
-                                    <div class="form-input col-lg-12 d-flex mb-3">
-                                        <div class="input-group date" id="datepicker">
-                                            <input type="date" id="checkOutDate" name="appointment" min="2023-01-01"
-                                                max="2023-12-31" class="form-control ps-3" readonly>
+                                    <div class="form-input col-lg-12">
+                                        <label for="return-date" class="label-style fw-medium form-label">체크아웃</label>
+                                        <div class="form-input col-lg-12 d-flex">
+                                            <div class="input-group date" id="datepicker">
+                                                <text type="date" name="schedule" min="2023-12-20" max="2024-12-30" class="form-control ps-3 lodging_checkout_time" readonly>
+                                                </text>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>                                
+                                    </div>      
+                                </div>                      
                                 <div class="form-input col-lg-12 mb-3">
-                                    <label for="name" class="label-style fw-medium form-label">이메일</label>
-                                    <input type="text" name="email"
-                                        class="form-control ps-3" readonly>
-                                </div>
-                                <div class="form-input col-lg-12 mb-3">
-                                    <label for="name" class="label-style fw-medium form-label">성명</label>
-                                    <input type="text" name="email"
-                                        class="form-control ps-3 me-3" readonly>
+                                    <label for="name" class="label-style fw-medium form-label">숙소 주소</label>
+                                    <text type="text" name="email"
+                                        class="form-control ps-3 me-3 lodging_adress" readonly>
+                                    </text>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label for="name" class="label-style fw-medium form-label">요청 사항</label>
-                                    <textarea placeholder="요청사항을 적어 주세요." class="form-control ps-3"
-                                        rows="8"></textarea>
+                                    <label for="name" class="label-style fw-medium form-label">상품 금액</label>
+                                    <text type="text" name="price"
+                                        class="form-control ps-3 me-3 lodging_room_price" readonly>
+                                    </text>
+                                </div>
+                                <div>
+                                    <button type="submit" name="submit"
+                                    class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6 w-100 lodging_reservation_btn mt-3">
+                                    예약하기</button>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="your-order">
-                            <h4 class="display-7 text-dark pb-4">결제 금액</h4>
-                            <div class="total-price">
-                                <table cellspacing="0" class="table table-borderless">
-                                    <tbody>
-                                        <tr class="subtotal border-top pt-2 pb-2 text-uppercase">
-                                            <th>상품 금액</th>
-                                            <td data-title="Subtotal">
-                                                <span class="price-amount amount ps-5">
-                                                    <bdi>
-                                                        <span class="price-currency-symbol"></span>999,999 </bdi>
-                                                </span>₩
-                                            </td>
-                                        </tr>
-                                        <tr class="subtotal  border-bottom pt-2 pb-2 text-uppercase">
-                                            <th>할인 금액</th>
-                                            <td data-title="Subtotal">
-                                                <span class="price-amount amount ps-5">
-                                                    <bdi>
-                                                        <span class="price-currency-symbol"></span>500,000 </bdi>
-                                                </span>₩
-                                            </td>
-                                        </tr>
-                                        <tr class="order-total border-bottom pt-2 pb-2 text-uppercase">
-                                            <th>총 결제 금액</th>
-                                            <td data-title="Total">
-                                                <span class="price-amount amount ps-5">
-                                                    <bdi>
-                                                        <span class="price-currency-symbol"></span>499,999 </bdi>
-                                                </span>₩
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="list-group mt-5 mb-3">
-                                    <h4 class="display-7 text-dark pb-4">결제 수단</h4>
-                                    <label class="list-group-item d-flex gap-2 border-0">
-                                        <input class="form-check-input flex-shrink-0" type="radio"
-                                            name="listGroupRadios" id="listGroupRadios1" value="" checked>
-                                        <span>
-                                            <strong class="text-uppercase">계좌이체</strong>
-                                            
-                                        </span>
-                                    </label>
-                                    <label class="list-group-item d-flex gap-2 border-0">
-                                        <input class="form-check-input flex-shrink-0" type="radio"
-                                            name="listGroupRadios" id="listGroupRadios2" value="">
-                                        <span>
-                                            <strong class="text-uppercase">카드</strong>
-                                        </span>
-                                    </label>
-                                    <label class="list-group-item d-flex gap-2 border-0">
-                                        <input class="form-check-input flex-shrink-0" type="radio"
-                                            name="listGroupRadios" id="listGroupRadios3" value="">
-                                        <span>
-                                            <strong class="text-uppercase">현금</strong>
-                                        </span>
-                                    </label>
-                                    <label class="list-group-item d-flex gap-2 border-0">
-                                        <input class="form-check-input flex-shrink-0" type="radio"
-                                            name="listGroupRadios" id="listGroupRadios3" value="">
-                                        <span>
-                                            <strong class="text-uppercase">휴대폰</strong>
-                                        </span>
-                                    </label>
-                                </div>
-                                <button type="submit" name="submit"
-                                    class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6 w-100">
-                                    예약하기</button>
-                            </div>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </section>
-    <footer id="footer" class="overflow-hidden padding-large pb-0 bg-gray-100">
-        <div class="container">
-            <div class="row d-flex flex-wrap justify-content-between">
-                <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
-                    <div class="footer-menu">
-                        <h5 class="widget-title pb-2 fw-semibold fs-2">About us</h5>
-                        <p>Ultrices interdum viverra pharetra, tellus. Sapien eu diam ipsum volutpat, amet fringi verra
-                            pharetrailla.</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 pb-3">
-                    <div class="footer-menu">
-                        <h5 class="widget-title pb-2 fw-semibold fs-2">Quick Links</h5>
-                        <ul class="menu-list list-unstyled">
-                            <li class="pb-2">
-                                <a href="#about">About</a>
-                            </li>
-                            <li class="pb-2">
-                                <a href="#activities">Activities</a>
-                            </li>
-                            <li class="pb-2">
-                                <a href="#our-rooms">Rooms</a>
-                            </li>
-                            <li class="pb-2">
-                                <a href="#booking-wrap">Booking</a>
-                            </li>
-                            <li class="pb-2">
-                                <a href="#contact">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
-                    <div class="footer-menu">
-                        <h5 class="widget-title pb-2 fw-semibold fs-2">Contact</h5>
-                        <ul class="menu-list list-unstyled">
-                            <li class="pb-2">Tea Berry, Marinette, USA
-                            </li>
-                            <li class="pb-2">+31 939 777 4546233
-                            </li>
-                            <li class="pb-2">
-                                <a href="mailto:">info@templatesjungle.com</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
-                    <div class="footer-menu">
-                        <h5 class="widget-title pb-2 fw-semibold fs-2">Get social</h5>
-                        <p>Follow us on social platforms and keep in touch with <a
-                                href="https://templatesjungle.com/">Templates
-                                Jungle.</a></p>
-                        <ul class="social-links list-unstyled d-flex mt-3">
-                            <li class="border d-flex justify-content-center align-items-center mx-auto">
-                                <a href="#">
-                                    <svg class="facebook text-primary-500" width="25" height="25">
-                                        <use xlink:href="#facebook"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="border d-flex justify-content-center align-items-center mx-auto">
-                                <a href="#">
-                                    <svg class="twitter text-primary-500" width="25" height="25">
-                                        <use xlink:href="#twitter"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="border d-flex justify-content-center align-items-center mx-auto">
-                                <a href="#">
-                                    <svg class="instagram text-primary-500" width="25" height="25">
-                                        <use xlink:href="#instagram"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="border d-flex justify-content-center align-items-center mx-auto">
-                                <a href="#">
-                                    <svg class="youtube text-primary-500" width="25" height="25">
-                                        <use xlink:href="#youtube"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="border d-flex justify-content-center align-items-center mx-auto">
-                                <a href="#">
-                                    <svg class="linkedin text-primary-500" width="25" height="25">
-                                        <use xlink:href="#linkedin"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex flex-wrap justify-content-between border-top pt-3">
-                <div class="col-lg-4">
-                    <p>© 2021 Copyright Telly.</p>
-                </div>
-                <div class="col-lg-4">
-                    <div class="payment-methods d-flex justify-content-center">
-                        <p class="pe-2">Payment methods:</p>
-                        <img src="images/payment-items.png" alt="payment">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="payment-methods d-flex justify-content-end">
-                        <p>Free HTML Website By: <a href="https://templatesjungle.com/">Templates Jungle.</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <footer id="footer" class="overflow-hidden padding-large pb-0 bg-gray-100 footer">
     </footer>
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/date-time-picker.min.js"></script>
@@ -427,6 +231,7 @@
     <script type="text/javascript" src="js/script.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <script type="text/javascript" src="js/custom/common.js"></script>
+	<script type="text/javascript" src="js/custom/index.js"></script>
     <script type="text/javascript" src="js/custom/lodging_reservation.js"></script>
 </body>
 
