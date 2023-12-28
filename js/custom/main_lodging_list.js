@@ -29,7 +29,6 @@ function createCard(pick_list){
         }
     }).then(res => res.json())
     .then(res => {
-        console.log(res);
         const $product_items = document.querySelector('.product_items');
         $product_items.innerHTML = '';
         res.forEach(element => {

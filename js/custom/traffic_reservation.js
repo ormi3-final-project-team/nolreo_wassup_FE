@@ -37,12 +37,10 @@ function createCard_bus(){
             $traffic_depart_time = res['depart_time'];
             $traffic_arrival_time = res['arrival_time'];
             $traffic_reservation_btn = document.querySelector('.traffic_reservation_btn');
-            console.log(res);
 
             document.querySelector('.traffic_num').textContent = res['num'];
             document.querySelector('.traffic_depart_point').textContent = res['depart_point'];
             document.querySelector('.traffic_dest_point').textContent = res['dest_point'];
-            console.log(res['num']);
             document.querySelector('.traffic_depart_time').textContent = res['depart_time'];
             document.querySelector('.traffic_arrival_time').textContent = res['arrival_time'];
             document.querySelector('.traffic_rest_seat').textContent = res['rest_seat'];
@@ -95,12 +93,10 @@ function createCard_train(){
             $traffic_depart_time = res['depart_time'];
             $traffic_arrival_time = res['arrival_time'];
             $traffic_reservation_btn = document.querySelector('.traffic_reservation_btn');
-            console.log(res);
 
             document.querySelector('.traffic_num').textContent = res['num'];
             document.querySelector('.traffic_depart_point').textContent = res['depart_point'];
             document.querySelector('.traffic_dest_point').textContent = res['dest_point'];
-            console.log(res['num']);
             document.querySelector('.traffic_depart_time').textContent = res['depart_time'];
             document.querySelector('.traffic_arrival_time').textContent = res['arrival_time'];
             document.querySelector('.traffic_rest_seat').textContent = res['rest_seat'];
