@@ -76,7 +76,7 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
     const name = datas['name'];
     $hotel_name.textContent = `${name}`;
     const review_score = datas['star_avg'];
-    $review_score.textContent = `${review_score}`;
+    $review_score.textContent = `${review_score.toFixed(1)}`;
     const review_count = datas['review_cnt'];
     $review_count.textContent = `(${review_count})`;
     const notice = datas['notice'];
@@ -157,9 +157,9 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
                             <div class="comment-meta mb-2 text-capitalize d-flex gap-3 text-black">
                                 <div class="author-name fs-5  ">${data['name']}</div>
                                 <span class=" ">${data['created_at'].split('T')[0]}</span>
-                                <buttonu class="reply-btn${container_id}">
+                                <button class="reply-btn${container_id}">
                                     <i class="icon icon-mail-reply"></i>답글
-                                </buttonu>
+                                </button>
                             </div>
                             ${reviewImageHTML}
                             <p>${data['content']}</p>
@@ -224,44 +224,43 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
                     `)
                 })
             });
-            document.querySelector('.review_btn').addEventListener('click', function(e){
-                e.preventDefault();
-                fetch(url + `account/${localStorage.getItem('id')}/`, {
-                    method: 'GET',
+        })
+        document.querySelector('.review_btn').addEventListener('click', function(e){
+            e.preventDefault();
+            fetch(url + `account/${localStorage.getItem('id')}/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${access_token}`
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                let rating = document.querySelector("input[name='rating']:checked").value;
+                let urlParams = new URLSearchParams(window.location.search);
+                let lodgingId = urlParams.get('id');
+                let loggedInUserId = localStorage.getItem('id');
+                let loggedInUserName = data['nickname'];
+                fetch(url + `lodging/review/?lodging_id=${urlParams.get('id')}`, {
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${access_token}`
                     },
+                    body: JSON.stringify({
+                        'title': 123123,
+                        'content': document.querySelector('.review_content').value,
+                        'star_score': rating,
+                        'lodging': lodgingId,
+                        'user': loggedInUserId,
+                        'name': loggedInUserName,
+                    })
                 })
-                .then(response => response.json())
                 .then(data => {
-                    let rating = document.querySelector("input[name='rating']:checked").value;
-                    let urlParams = new URLSearchParams(window.location.search);
-                    let lodgingId = urlParams.get('id');
-                    let loggedInUserId = localStorage.getItem('id');
-                    let loggedInUserName = data['nickname'];
-                    fetch(url + `lodging/review/?lodging_id=${urlParams.get('id')}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${access_token}`
-                        },
-                        body: JSON.stringify({
-                            'title': 123123,
-                            'content': document.querySelector('.review_content').value,
-                            'star_score': rating,
-                            'lodging': lodgingId,
-                            'user': loggedInUserId,
-                            'name': loggedInUserName,
-                        })
-                    })
-                    .then(data => {
-                        window.location.reload();
-                    })
+                    window.location.reload();
                 })
-            });
-            
-        })
+            })
+        });
     })
     fetch(url + `account/${user_id}/`, {
         method: 'GET',
