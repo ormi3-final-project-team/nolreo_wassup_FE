@@ -130,13 +130,13 @@ function createCard(pick_list){
                     }).then((res) => {
                         if (res.status === 201) {
                             $pick_btn.innerHTML = '<i class="fa-solid fa-heart fs-2"></i></button>'
+                            pick_list.push(element['id']);
                             window.location.reload();
                         }else{
                             alert('찜을 실패하였습니다.');
                         }
                     });
                 })
-                pick_list.push(element['id']);
             }
         });
     });
