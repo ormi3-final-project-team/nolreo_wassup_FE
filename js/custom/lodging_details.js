@@ -88,7 +88,7 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
     const amenities = datas['amenities'];
     amenities.forEach(amenity => {
         const amenity_tag = `
-        <li>${name}</li>
+        <li>${amenity.name}</li>
         `
         $amenity_container.insertAdjacentHTML('beforeend', amenity_tag);
     })
@@ -101,11 +101,17 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
     }).then(response => response.json())
     .then(room_datas => {
         room_datas.forEach(data => {
+            let img_src = '';
+            if (data['room_image'] == null) {
+                img_src = 'images/item1.jpg';
+            }else{
+                img_src = url + data['room_image']['image'].substr(1);
+            }
             $room_container.insertAdjacentHTML('beforeend', `
-            <div class="d-flex d-row justify-content-between">
+            <div class="d-flex d-row justify-content-between mt-5">
                 <div class="col-md-5">
                     <div class="swiper-slide room_thumb">
-                        <img src="${url + data['room_image']['image'].substr(1)}" alt="image" class="thumb-image img-fluid">
+                        <img src="${img_src}" alt="image" class="thumb-image img-fluid">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -114,8 +120,10 @@ fetch(url + `lodging/${urlParams.get('id')}`, {
                     <p>${data['name']}</p>
                     <p>기준 ${data['capacity'] - 1}인/ 최대 ${data['capacity']}인</p>
                     <p>싱글 침대 2개</p>
-                    <p class="d-flex justify-content-end fw-bold fs-2">${data['price']}원</p>
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">예약하기</button>
+                    <p class="d-flex justify-content-end fw-bold fs-2 m-0">${data['price']}원</p>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary btn-lg btn-block mb-2" type="submit">예약하기</button>
+                    </div>
                 </div>
             </div>
             `);
