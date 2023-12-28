@@ -38,11 +38,11 @@ function createCard(pick_list){
             let product_image_tag = ''
             if (element['lodging_image']){
                 product_image_tag = `<img src="${url+element['lodging_image']['image'].substr(1)}" alt="image"
-                                class="img-fluid overflow-hidden lodging_images"></img>`
+                                class="img-fluid overflow-hidden lodging_images" style="height:250px; width:400px;"></img>`
             }
             else{
                 product_image_tag = `<img src="images/lodging.jpg" alt="image"
-                                class="img-fluid overflow-hidden lodging_images"></img>`
+                                class="img-fluid overflow-hidden lodging_images" style="height:250px; width:400px;"></img>`
             }
             
             card_html = ''
