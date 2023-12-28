@@ -29,7 +29,7 @@ const logout_navbar = `
 </div>
 `
 
-const url = 'http://127.0.0.1:8000/';
+const url = 'https://api.nolreowassup.shop/';
 const access_token = localStorage.getItem('access');
 const $navbar = document.querySelector('.custom-navbar');
 const $profile_btn = document.querySelector('#profile-btn');
