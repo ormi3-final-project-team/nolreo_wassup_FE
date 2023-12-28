@@ -1,0 +1,25 @@
+.reply-form-container {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.reply-text {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.submit-reply {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.submit-reply:hover {
+    background-color: #45a049;
+}
