@@ -12,7 +12,7 @@ const $check_in = document.querySelector('#checkin');
 const $check_out = document.querySelector('#checkout');
 const $reservation_btn = document.querySelector('.reservation-btn');
 const accessToken = localStorage.getItem('access');
-const lodging_id = urlParams.get('id');
+const car_id = urlParams.get('id');
 const $heart_button = document.querySelector('#heart-button');
 
 fetch(url + `traffic/rentalcar/?rentalcar_id=${urlParams.get('id')}`, {
@@ -25,10 +25,9 @@ fetch(url + `traffic/rentalcar/?rentalcar_id=${urlParams.get('id')}`, {
     .then(car_datas => {
         $reservation_btn.addEventListener('click', function (event) {
             event.preventDefault();
-            const selectedRentalcarId = car_datas[0]['id'];
             const checkinDate = $check_in.value;
             const checkoutDate = $check_out.value;
-            window.location.href = `rentalcar_reservation.html?car_id=${selectedRentalcarId}&check_in=${checkinDate}&check_out=${checkoutDate}`;
+            window.location.href = `rentalcar_reservation.html?rentalcar_id=${car_id}&check_in=${checkinDate}&check_out=${checkoutDate}`;
         });
     })
 fetch(url + `traffic/rentalcar/${urlParams.get('id')}`, {
@@ -51,7 +50,9 @@ fetch(url + `traffic/rentalcar/${urlParams.get('id')}`, {
         const model = datas['model'];
         $model.textContent = `${model}`;
         const review_score = datas['star_avg'];
-        $review_score.textContent = `${review_score.toFixed(1)}`;
+        if (review_score != null){
+            $review_score.textContent = `${review_score.toFixed(1)}`;
+        }
         const review_count = datas['review_cnt'];
         $review_count.textContent = `(${review_count})`;
         // const notice = datas['notice'];
@@ -174,7 +175,13 @@ fetch(url + `traffic/rentalcar/${urlParams.get('id')}`, {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    const rating = document.querySelector("input[name='rating']:checked").value;
+                    const $star_tag = document.querySelector("input[name='rating']:checked");
+                    console.log($star_tag);
+                    let rating = '0';
+                    if ($star_tag != null){
+                        rating = $star_tag.value;
+                    }
+                    
                     const urlParams = new URLSearchParams(window.location.search);
                     const rental_car_id = urlParams.get('id');
                     const loggedInUserId = localStorage.getItem('id');
