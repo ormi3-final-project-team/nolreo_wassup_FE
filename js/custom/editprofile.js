@@ -10,7 +10,6 @@ fetch(url + 'account/' + user_id + '/', {
     }
 }).then(res => res.json())
 .then(res => {
-    console.log(res);
     if (res['image'] != null) {
         const fileName = res['image'];
         const file = new File([res['image']], fileName,{type:"image/jpeg", lastModified:new Date().getTime()}, 'utf-8');

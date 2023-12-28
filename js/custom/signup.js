@@ -20,7 +20,6 @@ $signup_btn.addEventListener('click', (event) => {
             alert('회원가입이 완료되었습니다.');
             window.location.href = 'login.html';
         } else {
-            res.json().then(console.log);
             alert('회원가입에 실패하였습니다.');
         }
     })

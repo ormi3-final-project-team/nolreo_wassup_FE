@@ -43,7 +43,6 @@ fetch(url + 'pick/train/',{
 }).then(res => res.json())
 .then(datas => {
     datas.forEach(data => {
-        console.log('train_data', data);
         createTrainCard(data);
     });
 });
@@ -185,7 +184,6 @@ function createRentalcarCard(data){
                     alert('삭제되었습니다.');
                     window.location.href = 'pick_list.html';
                 }else{
-                    console.log(res.json());
                     alert('삭제에 실패했습니다.');
                 }
             })
@@ -251,7 +249,6 @@ function createBusCard(data){
                     alert('삭제되었습니다.');
                     window.location.href = 'pick_list.html';
                 }else{
-                    console.log(res.json());
                     alert('삭제에 실패했습니다.');
                 }
             })
@@ -270,7 +267,6 @@ function createTrainCard(data){
         }
     }).then(res => res.json())
     .then(res => {
-        console.log(res);
         $train_pick_container.innerHTML += `
         <div class="col-md-12 mt-4">
             <div class="d-flex d-row justify-content-between">
@@ -318,7 +314,6 @@ function createTrainCard(data){
                     alert('삭제되었습니다.');
                     window.location.href = 'pick_list.html';
                 }else{
-                    console.log(res.json());
                     alert('삭제에 실패했습니다.');
                 }
             })
